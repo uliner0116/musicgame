@@ -46,14 +46,12 @@ namespace Game
         Button retryButton;
         [SerializeField]
         Button[] Hits;
-        /*[SerializeField]
-        Button Hit1;
-        [SerializeField]
-        Button Hit2;*/
         [SerializeField]
         Text scoreText;
         [SerializeField]
         Text lifeText;
+        [SerializeField]
+        Text comboText;
 
         float previousTime = 0f;
         SongData song;
@@ -62,6 +60,7 @@ namespace Game
         List<MessageObject> messageObjectPool = new List<MessageObject>();
         int life;
         int score;
+        int combo;
 
         /*Button[] Hits = new Button[]
         {
@@ -97,6 +96,16 @@ namespace Game
             get { return score; }
         }
 
+        int Combo
+        {
+            set
+            {
+                combo = value;
+                comboText.text = string.Format("Combo: {0}", combo);
+            }
+            get { return combo; }
+        }
+
 
         void Start()
         {
@@ -106,6 +115,7 @@ namespace Game
 
             Score = 0;
             Life = 10000;
+            Combo = 0;
             retryButton.onClick.AddListener(OnRetryButtonClick);
 
 
@@ -185,31 +195,44 @@ namespace Game
         void OnNotePerfect(int noteNumber)
         {
             ShowMessage("Perfect", Color.yellow, noteNumber);
-            Score += 1000;
+            //Score += 1000;
+            ScoreDouble(1000);
+            Combo++;
         }
 
         void OnNoteGreat(int noteNumber)
         {
             ShowMessage("Great", Color.magenta, noteNumber);
-            Score += 500;
+            //Score += 500;
+            ScoreDouble(500);
+            Combo++;
         }
 
         void OnNoteGood(int noteNumber)
         {
             ShowMessage("Perfect", Color.green, noteNumber);
-            Score += 300;
+            //Score += 300;
+            ScoreDouble(300);
+            Combo++;
         }
 
         void OnNoteBad(int noteNumber)
         {
             ShowMessage("Bad", Color.gray, noteNumber);
             Life--;
+            Combo = 0;
+        }
+
+        void ScoreDouble(int up)//依combo高低調整分數上升幅度
+        {
+            Score = (score+up) * (1 + combo / 50);
         }
 
         public void OnNoteMiss(int noteNumber)
         {
             ShowMessage("Miss", Color.black, noteNumber);
             Life--;
+            Combo = 0;
         }
 
         void ShowMessage(string message, Color color, int noteNumber)
