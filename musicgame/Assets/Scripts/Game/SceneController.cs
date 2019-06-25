@@ -58,6 +58,7 @@ namespace Game
         Dictionary<Button, int> lastTappedMilliseconds = new Dictionary<Button, int>();
         List<NoteObject> noteObjectPool = new List<NoteObject>();
         List<MessageObject> messageObjectPool = new List<MessageObject>();
+        int maxLife;
         int life;
         int score;
         int combo;
@@ -101,6 +102,13 @@ namespace Game
             set
             {
                 combo = value;
+                if(combo >= 50 && combo % 5 == 0)//生命回復
+                {
+                    if(life< maxLife)
+                    {
+                        Life++;
+                    }
+                }
                 comboText.text = string.Format("Combo: {0}", combo);
             }
             get { return combo; }
@@ -115,6 +123,7 @@ namespace Game
 
             Score = 0;
             Life = 10000;
+            maxLife = 10000;
             Combo = 0;
             retryButton.onClick.AddListener(OnRetryButtonClick);
 
