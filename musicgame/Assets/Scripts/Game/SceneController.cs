@@ -122,7 +122,7 @@ namespace Game
             Application.targetFrameRate = 60;
 
             Score = 0;
-            Life = 10000;
+            Life = 10;
             maxLife = 10000;
             Combo = 0;
             retryButton.onClick.AddListener(OnRetryButtonClick);
