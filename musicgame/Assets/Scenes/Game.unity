@@ -273,7 +273,7 @@ MonoBehaviour:
   - {fileID: 398181513}
   defaultButtonColor: {r: 0, g: 0, b: 0, a: 0}
   highlightButtonColor: {r: 1, g: 0, b: 0, a: 0.159}
-  songDataAsset: {fileID: 4900000, guid: a40c2fcfbcfee2f4eb41284c7ec71a06, type: 3}
+  songDataAsset: {fileID: 4900000, guid: e7df842cf6aabe64d89ce75919cf16f1, type: 3}
   noteObjectContainer: {fileID: 588605925}
   noteObjectPrefab: {fileID: 803419988}
   messageObjectContainer: {fileID: 588605925}
@@ -378,8 +378,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000015258599, y: -503.03}
-  m_SizeDelta: {x: 365.5, y: 169.35}
+  m_AnchoredPosition: {x: 0.000019073, y: -508.71}
+  m_SizeDelta: {x: 365.5, y: 157.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &92034716
 MonoBehaviour:
@@ -686,8 +686,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 372.05, y: -502.88}
-  m_SizeDelta: {x: 378.6, y: 169.55}
+  m_AnchoredPosition: {x: 372.05, y: -508.71}
+  m_SizeDelta: {x: 378.6, y: 157.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &315630819
 MonoBehaviour:
@@ -1094,7 +1094,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 75}
+  m_AnchoredPosition: {x: 6.6500244, y: 108}
   m_SizeDelta: {x: 0, y: -150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &588605926
@@ -1285,7 +1285,7 @@ Prefab:
         type: 2}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: b98728d801d2c044a8b67a656f026a6c, type: 3}
+      objectReference: {fileID: 8300000, guid: eb9b41e3775d1dd46a0123dfb287fa19, type: 3}
     - target: {fileID: 82310854829588606, guid: 863863c9cfac4495392ace64acb22b9f,
         type: 2}
       propertyPath: BypassEffects
@@ -1441,7 +1441,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Life: 10'
+  m_Text: 'Life: 30'
 --- !u!222 &684688532
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2622,8 +2622,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -370.75, y: -503}
-  m_SizeDelta: {x: 376, y: 169.3}
+  m_AnchoredPosition: {x: -365, y: -508.7}
+  m_SizeDelta: {x: 364.5, y: 157.89}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1316023362
 MonoBehaviour:

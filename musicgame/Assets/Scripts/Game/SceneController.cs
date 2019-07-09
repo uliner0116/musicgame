@@ -13,6 +13,7 @@ namespace Game
 {
     public class SceneController : MonoBehaviour
     {
+        
         public const float PRE_NOTE_SPAWN_TIME = 3f;
         public const float PERFECT_BORDER = 0.05f;
         public const float GREAT_BORDER = 0.1f;
@@ -62,6 +63,7 @@ namespace Game
         int life;
         int score;
         int combo;
+        
 
         /*Button[] Hits = new Button[]
         {
@@ -117,16 +119,17 @@ namespace Game
 
         void Start()
         {
+            Screen.orientation = ScreenOrientation.Portrait;
             Debug.Log("star");
             // フレームレート設定
             Application.targetFrameRate = 60;
 
             Score = 0;
-            Life = 10;
+            Life = 30;
             maxLife = 10000;
             Combo = 0;
             retryButton.onClick.AddListener(OnRetryButtonClick);
-
+            
 
             // ボタンのリスナー設定と最終タップ時間の初期化
             /*for (var i = 0; i < noteButtons.Length; i=i+2)
@@ -165,6 +168,7 @@ namespace Game
             song = SongData.LoadFromJson(songDataAsset.text);
 
             audioManager.bgm.PlayDelayed(1f);
+
         }
 
         void Update()
@@ -191,14 +195,26 @@ namespace Game
             }*/
 
             // ノートを生成
+            var audioLength = audioManager.bgm.clip.length;
             var bgmTime = audioManager.bgm.time;
-            foreach (var note in song.GetNotesBetweenTime(previousTime + PRE_NOTE_SPAWN_TIME, bgmTime + PRE_NOTE_SPAWN_TIME))
+            if (bgmTime < audioLength)
             {
-                var obj = noteObjectPool.FirstOrDefault(x => !x.gameObject.activeSelf);
-                var positionX = noteButtons[note.NoteNumber].transform.localPosition.x;
-                obj.Initialize(this, audioManager.bgm, note, positionX);
+                foreach (var note in song.GetNotesBetweenTime(previousTime + PRE_NOTE_SPAWN_TIME, bgmTime + PRE_NOTE_SPAWN_TIME))
+                {
+                    var obj = noteObjectPool.FirstOrDefault(x => !x.gameObject.activeSelf);
+                    var positionX = noteButtons[note.NoteNumber].transform.localPosition.x;
+                    obj.Initialize(this, audioManager.bgm, note, positionX);
+                }
+                previousTime = bgmTime;
             }
-            previousTime = bgmTime;
+            else
+            {
+                Screen.orientation = ScreenOrientation.LandscapeRight;
+                SceneManager.LoadScene("Score");
+                scoreText.text = string.Format("Score: {0}", score);
+                comboText.text = string.Format("Combo: {0}", combo);
+            }
+
         }
 
         void OnNotePerfect(int noteNumber)
