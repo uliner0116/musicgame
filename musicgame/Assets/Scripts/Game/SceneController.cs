@@ -63,6 +63,7 @@ namespace Game
         int life;
         int score;
         int combo;
+        int maxCombo=0;
         
 
         /*Button[] Hits = new Button[]
@@ -111,6 +112,10 @@ namespace Game
                         Life++;
                     }
                 }
+                if (maxCombo < combo)
+                {
+                    maxCombo = combo;
+                }
                 comboText.text = string.Format("Combo: {0}", combo);
             }
             get { return combo; }
@@ -119,14 +124,14 @@ namespace Game
 
         void Start()
         {
-            Screen.orientation = ScreenOrientation.Portrait;
+           
             Debug.Log("star");
             // フレームレート設定
             Application.targetFrameRate = 60;
 
             Score = 0;
             Life = 30;
-            maxLife = 10000;
+            maxLife = 30;
             Combo = 0;
             retryButton.onClick.AddListener(OnRetryButtonClick);
             
@@ -209,10 +214,11 @@ namespace Game
             }
             else
             {
-                Screen.orientation = ScreenOrientation.LandscapeRight;
                 SceneManager.LoadScene("Score");
-                scoreText.text = string.Format("Score: {0}", score);
-                comboText.text = string.Format("Combo: {0}", combo);
+                Score += 0;
+                //scoreText.text = string.Format("Score: {0}", score);
+
+                comboText.text = string.Format("Combo: {0}", maxCombo);
             }
 
         }
@@ -250,7 +256,7 @@ namespace Game
 
         void ScoreDouble(int up)//依combo高低調整分數上升幅度
         {
-            Score = (score+up) * (1 + combo / 50);
+            Score = (score+up) * (1 + combo / 150);
         }
 
         public void OnNoteMiss(int noteNumber)
