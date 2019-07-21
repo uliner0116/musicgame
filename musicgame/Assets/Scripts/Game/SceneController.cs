@@ -8,6 +8,7 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using Common;
 using Common.Data;
+using System.Threading;
 
 namespace Game
 {
@@ -130,7 +131,7 @@ namespace Game
             Application.targetFrameRate = 60;
 
             Score = 0;
-            Life = 30;
+            Life = 3000;
             maxLife = 30;
             Combo = 0;
             retryButton.onClick.AddListener(OnRetryButtonClick);
@@ -202,23 +203,24 @@ namespace Game
             // ノートを生成
             var audioLength = audioManager.bgm.clip.length;
             var bgmTime = audioManager.bgm.time;
-            if (bgmTime < audioLength)
+            if (bgmTime >= audioLength)
             {
-                foreach (var note in song.GetNotesBetweenTime(previousTime + PRE_NOTE_SPAWN_TIME, bgmTime + PRE_NOTE_SPAWN_TIME))
+                Thread.Sleep(1500); //Delay 1秒
+                Debug.Log("END");
+                SceneManager.LoadScene("Score");
+                Score += 0;
+                //scoreText.text = string.Format("Score: {0}", score);
+                comboText.text = string.Format("Combo: {0}", maxCombo);            
+            }
+            else
+            {
+               foreach (var note in song.GetNotesBetweenTime(previousTime + PRE_NOTE_SPAWN_TIME, bgmTime + PRE_NOTE_SPAWN_TIME))
                 {
                     var obj = noteObjectPool.FirstOrDefault(x => !x.gameObject.activeSelf);
                     var positionX = noteButtons[note.NoteNumber].transform.localPosition.x;
                     obj.Initialize(this, audioManager.bgm, note, positionX);
                 }
                 previousTime = bgmTime;
-            }
-            else
-            {
-                SceneManager.LoadScene("Score");
-                Score += 0;
-                //scoreText.text = string.Format("Score: {0}", score);
-
-                comboText.text = string.Format("Combo: {0}", maxCombo);
             }
 
         }
