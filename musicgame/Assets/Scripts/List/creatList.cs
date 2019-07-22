@@ -48,7 +48,7 @@ public class creatList : MonoBehaviour {
         //展示資料夾
         for(int i = 0; i < FolderList.Count; i++){
             //ScroView的排列
-            //Vector3 nextBtnPos = new Vector3(0,- BtnPrefab.)
+           // Vector3 nextBtnPos = new Vector3(0,- BtnPrefab.)
         }
 
     }

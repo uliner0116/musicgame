@@ -71,10 +71,10 @@ namespace Game
         {
             Hit0, Hit1,Hit2
         };*/
-      /*   KeyCode[] keys = new KeyCode[]
+         KeyCode[] keys = new KeyCode[]
        {
-            KeyCode.Z, KeyCode.S, KeyCode.X, KeyCode.D, KeyCode.C
-       };*/
+            KeyCode.S, KeyCode.D, KeyCode.F, KeyCode.J, KeyCode.K, KeyCode.L
+       };
 
     int Life
         {
@@ -138,11 +138,11 @@ namespace Game
             
 
             // ボタンのリスナー設定と最終タップ時間の初期化
-            /*for (var i = 0; i < noteButtons.Length; i=i+2)
+            for (var i = 0; i < noteButtons.Length; i++)
             {
                 noteButtons[i].onClick.AddListener(GetOnNoteButtonClickAction(i));
                 lastTappedMilliseconds.Add(noteButtons[i], 0);
-            }*/
+            }
             Debug.Log("Hits.Length" + Hits.Length);
             for (int i = 0; i < Hits.Length; i=i+2)
             {
@@ -180,14 +180,14 @@ namespace Game
         void Update()
         {
             // キーボード入力も可能に
-            /*for (var i = 0; i < Hits.Length; i++)
+            for (var i = 0; i < keys.Length; i++)
              {
                  //接收觸及改這邊
-                 if (Input.GetKeyDown(Hits[i]))
+                 if (Input.GetKeyDown(keys[i]))
                  {
                      noteButtons[i].onClick.Invoke();
                  }
-             }*/
+             }
             /*if (MobileInput())
             {
                 Debug.Log("touch");
