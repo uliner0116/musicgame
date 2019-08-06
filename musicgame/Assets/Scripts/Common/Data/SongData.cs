@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 namespace Common.Data
@@ -19,6 +20,8 @@ namespace Common.Data
         }
 
         public int bpm = 1200;
+       
+       
 
         public NoteType minNoteType = NoteType.Sixteenth;
 
@@ -29,6 +32,7 @@ namespace Common.Data
         {
             get { return notes.Count > 0; }
         }
+
 
         public static SongData LoadFromJson(string json)
         {

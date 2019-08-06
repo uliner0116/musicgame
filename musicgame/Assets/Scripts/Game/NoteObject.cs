@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Common.Data;
+using System;
+using Common;
 
 namespace Game
 {
@@ -12,11 +14,12 @@ namespace Game
 
         [SerializeField]
         Image image;
-
+        [SerializeField]
         SceneController sceneController;
         AudioSource bgm;
         SongData.Note note;
-        float positionX;
+        public  float positionX;
+
 
         public int NoteNumber
         {
@@ -30,16 +33,17 @@ namespace Game
 
         void Update()
         {
-            var timeDiff = note.Time - bgm.time;
-            if (timeDiff < -SceneController.BAD_BORDER)
-            {
-                sceneController.OnNoteMiss(NoteNumber);
-                gameObject.SetActive(false);
-            }
+ 
+                var timeDiff = note.Time - bgm.time;
+                if (timeDiff < -SceneController.BAD_BORDER)
+                {
+                    sceneController.OnNoteMiss(NoteNumber);
+                    gameObject.SetActive(false);
+                }
 
-            GetComponent<RectTransform>().localPosition = new Vector3(positionX,
-                                                  baseY + timeDiff * 800f,
-                                                  transform.localPosition.z);
+                GetComponent<RectTransform>().localPosition = new Vector3(positionX,
+                                                    baseY + timeDiff * 800f,
+                                                    transform.localPosition.z);
         }
 
         public void Initialize(SceneController sceneController, AudioSource bgm, SongData.Note note, float positionX)

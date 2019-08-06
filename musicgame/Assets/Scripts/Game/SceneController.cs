@@ -9,6 +9,7 @@ using UnityEngine.SceneManagement;
 using Common;
 using Common.Data;
 using System.Threading;
+using System.Text.RegularExpressions;
 
 namespace Game
 {
@@ -47,6 +48,10 @@ namespace Game
         [SerializeField]
         Button retryButton;
         [SerializeField]
+        Button stopButton;
+        [SerializeField]
+        Button UnStopButton;
+        [SerializeField]
         Button[] Hits;
         [SerializeField]
         Text scoreText;
@@ -65,13 +70,15 @@ namespace Game
         int score;
         int combo;
         int maxCombo=0;
-        
+        int noteQuantity;
+        MatchCollection mc = null;
+
 
         /*Button[] Hits = new Button[]
         {
             Hit0, Hit1,Hit2
         };*/
-         KeyCode[] keys = new KeyCode[]
+        KeyCode[] keys = new KeyCode[]
        {
             KeyCode.S, KeyCode.D, KeyCode.F, KeyCode.J, KeyCode.K, KeyCode.L
        };
@@ -122,10 +129,12 @@ namespace Game
             get { return combo; }
         }
 
+         
+
 
         void Start()
         {
-           
+            
             Debug.Log("star");
             // フレームレート設定
             Application.targetFrameRate = 60;
@@ -135,7 +144,9 @@ namespace Game
             maxLife = 30;
             Combo = 0;
             retryButton.onClick.AddListener(OnRetryButtonClick);
-            
+            stopButton.onClick.AddListener(Stop);
+            UnStopButton.onClick.AddListener(UnStop);
+
 
             // ボタンのリスナー設定と最終タップ時間の初期化
             for (var i = 0; i < noteButtons.Length; i++)
@@ -172,59 +183,76 @@ namespace Game
 
             // 楽曲データのロード
             song = SongData.LoadFromJson(songDataAsset.text);
-
+            Regex re = new Regex("time");
+            mc = re.Matches(songDataAsset.text);
+            noteQuantity = mc.Count;
+            Debug.Log("noteQuantity" + noteQuantity);
             audioManager.bgm.PlayDelayed(1f);
 
         }
 
         void Update()
         {
+            //Debug.Log("遊戲時間為:"+Time.time);
             // キーボード入力も可能に
             for (var i = 0; i < keys.Length; i++)
-             {
-                 //接收觸及改這邊
-                 if (Input.GetKeyDown(keys[i]))
-                 {
-                     noteButtons[i].onClick.Invoke();
-                 }
-             }
-            /*if (MobileInput())
-            {
-                Debug.Log("touch");
-                int i;
-                i = Collision();
-                if (i != 5)
                 {
-                    Debug.Log(i);
-                    noteButtons[i].onClick.Invoke();
+                    //接收觸及改這邊
+                    if (Input.GetKeyDown(keys[i]))
+                    {
+                        noteButtons[i].onClick.Invoke();
+                    }
                 }
-            }*/
+                /*if (MobileInput())
+                {
+                    Debug.Log("touch");
+                    int i;
+                    i = Collision();
+                    if (i != 5)
+                    {
+                        Debug.Log(i);
+                        noteButtons[i].onClick.Invoke();
+                    }
+                }*/
 
-            // ノートを生成
-            var audioLength = audioManager.bgm.clip.length;
-            var bgmTime = audioManager.bgm.time;
-            if (bgmTime >= audioLength)
-            {
-                Thread.Sleep(1500); //Delay 1秒
-                Debug.Log("END");
-                SceneManager.LoadScene("Score");
-                Score += 0;
-                //scoreText.text = string.Format("Score: {0}", score);
-                comboText.text = string.Format("Combo: {0}", maxCombo);            
-            }
-            else
-            {
-               foreach (var note in song.GetNotesBetweenTime(previousTime + PRE_NOTE_SPAWN_TIME, bgmTime + PRE_NOTE_SPAWN_TIME))
+                // ノートを生成
+                var audioLength = audioManager.bgm.clip.length;
+                var bgmTime = audioManager.bgm.time;
+                if (Time.time >= audioLength+2)
                 {
-                    var obj = noteObjectPool.FirstOrDefault(x => !x.gameObject.activeSelf);
-                    var positionX = noteButtons[note.NoteNumber].transform.localPosition.x;
-                    obj.Initialize(this, audioManager.bgm, note, positionX);
+                    Debug.Log("END");
+                    Debug.Log("maxCombo:"+ maxCombo);
+                    SceneManager.LoadScene("Score");
+                    Score += 0;
+                    //scoreText.text = string.Format("Score: {0}", score);
+                    comboText.text = string.Format("Combo: {0}", maxCombo);
                 }
-                previousTime = bgmTime;
-            }
+                else
+                {
+                    foreach (var note in song.GetNotesBetweenTime(previousTime + PRE_NOTE_SPAWN_TIME, bgmTime + PRE_NOTE_SPAWN_TIME))
+                    {
+                        var obj = noteObjectPool.FirstOrDefault(x => !x.gameObject.activeSelf);
+                        var positionX = noteButtons[note.NoteNumber].transform.localPosition.x;
+                        obj.Initialize(this, audioManager.bgm, note, positionX);
+                    }
+                    previousTime = bgmTime;
+                }
+         }
+          
+        void Stop()
+             {
+                Time.timeScale = 0;
+                audioManager.bgm.Pause();
+                Debug.Log("Stop");
 
         }
+        void UnStop()
+        {
+            Time.timeScale = 1;
+            audioManager.bgm.UnPause();
+            Debug.Log("UnStop");
 
+        }
         void OnNotePerfect(int noteNumber)
         {
             ShowMessage("Perfect", Color.yellow, noteNumber);
