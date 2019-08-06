@@ -15,7 +15,12 @@ namespace Game
 {
     public class SceneController : MonoBehaviour
     {
-        
+
+        public string mainMenuSceneName;
+        public string gameName;
+        private bool pauseEnabled = false;
+        public GameObject gameOverCanvasPrefab;
+
         public const float PRE_NOTE_SPAWN_TIME = 3f;
         public const float PERFECT_BORDER = 0.05f;
         public const float GREAT_BORDER = 0.1f;
@@ -98,7 +103,7 @@ namespace Game
             get { return life; }
         }
 
-        int Score
+        public int Score
         {
             set
             {
@@ -108,7 +113,7 @@ namespace Game
             get { return score; }
         }
 
-        int Combo
+       public int Combo
         {
             set
             {
@@ -134,7 +139,9 @@ namespace Game
 
         void Start()
         {
-            
+            pauseEnabled = false;
+            Time.timeScale = 1;
+
             Debug.Log("star");
             // フレームレート設定
             Application.targetFrameRate = 60;
@@ -145,7 +152,7 @@ namespace Game
             Combo = 0;
             retryButton.onClick.AddListener(OnRetryButtonClick);
             stopButton.onClick.AddListener(Stop);
-            UnStopButton.onClick.AddListener(UnStop);
+            
 
 
             // ボタンのリスナー設定と最終タップ時間の初期化
@@ -220,12 +227,7 @@ namespace Game
                 var bgmTime = audioManager.bgm.time;
                 if (Time.time >= audioLength+2)
                 {
-                    Debug.Log("END");
-                    Debug.Log("maxCombo:"+ maxCombo);
-                    SceneManager.LoadScene("Score");
-                    Score += 0;
-                    //scoreText.text = string.Format("Score: {0}", score);
-                    comboText.text = string.Format("Combo: {0}", maxCombo);
+                     Instantiate(gameOverCanvasPrefab, Vector2.zero, Quaternion.identity);
                 }
                 else
                 {
@@ -244,14 +246,45 @@ namespace Game
                 Time.timeScale = 0;
                 audioManager.bgm.Pause();
                 Debug.Log("Stop");
-
+                pauseEnabled = true;
         }
-        void UnStop()
+  
+        void OnGUI()
         {
-            Time.timeScale = 1;
-            audioManager.bgm.UnPause();
-            Debug.Log("UnStop");
+            if (pauseEnabled == true)
+            {
 
+
+                //Make a background box
+                GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 100, 250, 200), "Pause Menu");
+
+                //Make Main Menu button
+                if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 50, 250, 50), "Main Menu"))
+                {
+                    Application.LoadLevel(mainMenuSceneName);
+                }
+
+                //Make Change Graphics Quality button
+                if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2, 250, 50), "Retry"))
+                {
+
+                    Application.LoadLevel(gameName);
+                }
+
+                if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 50, 250, 50), "Back Game"))
+                {
+                    Time.timeScale = 1;
+                    audioManager.bgm.UnPause();
+                    Debug.Log("UnStop");
+                    pauseEnabled = false;
+                }
+
+                //Make quit game button
+                if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 100, 250, 50), "Quit Game"))
+                {
+                    Application.Quit();
+                }
+            }
         }
         void OnNotePerfect(int noteNumber)
         {
