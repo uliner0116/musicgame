@@ -348,7 +348,7 @@ MonoBehaviour:
   - {fileID: 2102471248}
   defaultButtonColor: {r: 0, g: 0, b: 0, a: 0}
   highlightButtonColor: {r: 1, g: 0, b: 0, a: 0.159}
-  songDataAsset: {fileID: 4900000, guid: 11d6291713283cc4c8050c70b5c374ea, type: 3}
+  songDataAsset: {fileID: 4900000, guid: 90749692dc36f6744b0567111cc4b13a, type: 3}
   noteObjectContainer: {fileID: 588605925}
   noteObjectPrefab: {fileID: 803419988}
   messageObjectContainer: {fileID: 588605925}
@@ -357,6 +357,7 @@ MonoBehaviour:
   gameOverPanel: {fileID: 978027126}
   retryButton: {fileID: 32576542}
   stopButton: {fileID: 1432728432}
+  UnStopButton: {fileID: 1526119660}
   Hits:
   - {fileID: 1316023362}
   - {fileID: 719842468}
@@ -998,7 +999,7 @@ Prefab:
         type: 2}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 5a5302582e1ca6840aad0e7f8d6d9a60, type: 3}
+      objectReference: {fileID: 8300000, guid: 244010bb8c42de54180b9aad9afd6e41, type: 3}
     - target: {fileID: 82310854829588606, guid: 863863c9cfac4495392ace64acb22b9f,
         type: 2}
       propertyPath: BypassEffects
@@ -1621,9 +1622,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   baseY: 0
   image: {fileID: 803419989}
-  audioManager: {fileID: 0}
+  sceneController: {fileID: 0}
   positionX: 0
-  isStop: 0
 --- !u!114 &803419989
 MonoBehaviour:
   m_ObjectHideFlags: 0

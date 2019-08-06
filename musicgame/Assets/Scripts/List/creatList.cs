@@ -17,12 +17,12 @@ public class creatList : MonoBehaviour {
     Animator animator;
 	// Use this for initialization
 	void Start () {
-        FloderPath = "jar:file://" + Application.dataPath + "!/Assets/Audios";
+        FloderPath = "jar:file://" + Application.dataPath + "!/assets";
         Debug.Log(FloderPath);
         if (Application.platform == RuntimePlatform.Android)
         {
-
-            FloderPath = Resources.Load("Audios/cAudio").ToString();
+            FloderPath = "jar:file://" + Application.dataPath + "!/assets";
+            //FloderPath = Resources.Load("Audios/cAudio").ToString();
             ShowFolderWindow();
         }
         if (Application.platform == RuntimePlatform.WindowsPlayer)
