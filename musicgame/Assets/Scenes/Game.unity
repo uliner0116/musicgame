@@ -278,7 +278,7 @@ MonoBehaviour:
   - {fileID: 2102471248}
   defaultButtonColor: {r: 0, g: 0, b: 0, a: 0}
   highlightButtonColor: {r: 1, g: 0, b: 0, a: 0.159}
-  songDataAsset: {fileID: 4900000, guid: d330d5649f5890e47b749bbc0a694626, type: 3}
+  songDataAsset: {fileID: 4900000, guid: fe923683e4a8cbf4bb660f2ceb366045, type: 3}
   noteObjectContainer: {fileID: 588605925}
   noteObjectPrefab: {fileID: 803419988}
   messageObjectContainer: {fileID: 588605925}
@@ -309,7 +309,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &76563177
 MonoBehaviour:
@@ -392,7 +392,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &398181509
 GameObject:
@@ -910,13 +910,13 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4225879283151282, guid: 863863c9cfac4495392ace64acb22b9f, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 82310854829588606, guid: 863863c9cfac4495392ace64acb22b9f,
         type: 2}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 5a44077619b1ac24eb7dfa6ec3c054ac, type: 3}
+      objectReference: {fileID: 8300000, guid: ece097935063333418ab32af6155e6db, type: 3}
     - target: {fileID: 82310854829588606, guid: 863863c9cfac4495392ace64acb22b9f,
         type: 2}
       propertyPath: BypassEffects
@@ -2391,7 +2391,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1294634215
 GameObject:
