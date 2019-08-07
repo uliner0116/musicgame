@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 130722848}
   - component: {fileID: 130722847}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: "\u97F3\u6548"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -215,7 +215,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -88, y: -41}
+  m_AnchoredPosition: {x: -88, y: -113}
   m_SizeDelta: {x: 125.6, y: 57.76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &130722847
@@ -1463,7 +1463,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: c622e87b6c904d9449a9b77450b3b706, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c9ed06dbf39b0bf4f86dbcc11a8ae727, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1551,7 +1551,7 @@ GameObject:
   - component: {fileID: 1636848373}
   - component: {fileID: 1636848372}
   m_Layer: 5
-  m_Name: background2
+  m_Name: "\u97F3\u91CF\u8A2D\u5B9A\u80CC\u666F"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1575,7 +1575,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5.3, y: -38.4}
+  m_AnchoredPosition: {x: -5.3, y: -5}
   m_SizeDelta: {x: 389, y: 393.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1636848372
@@ -1597,8 +1597,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 426f4b35346102d449f0468e287e0813, type: 3}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 816b8478f0fc6cc4491fea6ffdeb6d00, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1622,7 +1622,7 @@ GameObject:
   - component: {fileID: 1669943949}
   - component: {fileID: 1669943948}
   m_Layer: 5
-  m_Name: Image
+  m_Name: "\u97F3\u91CF"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1645,7 +1645,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -86, y: 86}
+  m_AnchoredPosition: {x: -86, y: 41}
   m_SizeDelta: {x: 125.6, y: 57.76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1669943948
