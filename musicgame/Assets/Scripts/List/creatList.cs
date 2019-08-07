@@ -6,17 +6,19 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class creatList : MonoBehaviour {
+public class creatList : MonoBehaviour
+{
 
     public Button Btn_Prefab;
     public string FloderPath = @"C:\";
 
     List<string> FolderList;
-   
+
 
     Animator animator;
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         FloderPath = "jar:file://" + Application.dataPath + "!/assets";
         Debug.Log(FloderPath);
         if (Application.platform == RuntimePlatform.Android)
@@ -61,9 +63,10 @@ public class creatList : MonoBehaviour {
         }
 
         //展示資料夾
-        for(int i = 0; i < FolderList.Count; i++){
+        for (int i = 0; i < FolderList.Count; i++)
+        {
             //ScroView的排列
-            Vector3 nextBtnPos = new Vector3(200, -Btn_Prefab.GetComponent<RectTransform>().rect.height * i - Btn_Prefab.GetComponent<RectTransform>().rect.height/2, 0);
+            Vector3 nextBtnPos = new Vector3(200, -Btn_Prefab.GetComponent<RectTransform>().rect.height * i - Btn_Prefab.GetComponent<RectTransform>().rect.height / 2, 0);
 
             //產生按鈕
             Button path_btn = Instantiate(Btn_Prefab, transform.Find("Content"));
@@ -85,7 +88,9 @@ public class creatList : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
-		
-	}
+    void Update()
+    {
+
+    }
 }
+

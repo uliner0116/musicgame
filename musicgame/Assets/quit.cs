@@ -9,14 +9,12 @@ public class quit : MonoBehaviour
     void Start()
     {
         //按下按鈕時，呼叫ClickEvent()
-        GetComponent<Button>().onClick.AddListener(() =>
-        {
-            ClickEvent();
-        });
+        this.GetComponent<Button>().onClick.AddListener(ClickEvent);
     }
 
     void ClickEvent()
     {
+        Debug.Log("quit");
         Application.Quit();
     }
 }

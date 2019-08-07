@@ -72,11 +72,12 @@ namespace Game
         List<MessageObject> messageObjectPool = new List<MessageObject>();
         int maxLife;
         int life;
-        int score;
+        public int score;
         int combo;
-        int maxCombo=0;
+        public int maxCombo=0;
         int noteQuantity;
         MatchCollection mc = null;
+        Boolean inOver = false;
 
 
         /*Button[] Hits = new Button[]
@@ -139,10 +140,13 @@ namespace Game
 
         void Start()
         {
+            Debug.Log("star");
+            this.songDataAsset = songData.songDataAsset;
+            audioManager.bgm.clip = songData.audio;
             pauseEnabled = false;
             Time.timeScale = 1;
 
-            Debug.Log("star");
+            
             // フレームレート設定
             Application.targetFrameRate = 60;
 
@@ -225,8 +229,9 @@ namespace Game
                 // ノートを生成
                 var audioLength = audioManager.bgm.clip.length;
                 var bgmTime = audioManager.bgm.time;
-                if (Time.time >= audioLength+2)
+                if (Time.time >= audioLength+3 && inOver==false)
                 {
+                     inOver = true;
                      Instantiate(gameOverCanvasPrefab, Vector2.zero, Quaternion.identity);
                 }
                 else

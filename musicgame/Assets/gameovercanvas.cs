@@ -12,9 +12,9 @@ public class gameovercanvas : MonoBehaviour
     public int combo;
     void Start()
     {
-        score = GameObject.FindObjectOfType<Game.SceneController>().Score;
+        score = GameObject.FindObjectOfType<Game.SceneController>().score;
         finalscore.text = string.Format("Score: {0}", score);
-        combo = GameObject.FindObjectOfType<Game.SceneController>().Combo;
+        combo = GameObject.FindObjectOfType<Game.SceneController>().maxCombo;
         finalcombo.text = string.Format("Combo: {0}", combo);
     }
 

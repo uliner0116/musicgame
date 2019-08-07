@@ -9,5 +9,9 @@ namespace Common
     {
         public AudioSource bgm;
         public AudioSource[] notes;
+        private void Start()
+        {
+            //this.bgm.clip = songData.audio;
+        }
     }
 }
