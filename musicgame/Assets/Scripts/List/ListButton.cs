@@ -34,7 +34,7 @@ public class ListButton : MonoBehaviour
         //Game.SceneController.songDataAsset= Resources.Load<TextAsset>(noteTxt);
         //songData.audio = www.GetAudioClip();
         songData.audio = Resources.Load<AudioClip>("Audios/cAudio/"+ transform.name);
-        songData.songDataAsset = Resources.Load<TextAsset>("notetxt/"+ transform.name+"/"+ transform.name);
+        songData.songDataAsset = Resources.Load<TextAsset>("6linetxt/" + transform.name+"/"+ transform.name);
         Debug.Log("audio:" + songData.audio.name);
         Debug.Log("songDataAsset:" + songData.songDataAsset.name);
         SceneManager.LoadScene("Game");

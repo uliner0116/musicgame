@@ -166,7 +166,7 @@ namespace Game
                 lastTappedMilliseconds.Add(noteButtons[i], 0);
             }
             Debug.Log("Hits.Length" + Hits.Length);
-            for (int i = 0; i < Hits.Length; i=i+2)
+            for (int i = 0; i < Hits.Length; i++)
             {
                 Debug.Log("set"+i);
                 Hits[i].onClick.AddListener(GetOnNoteButtonClickAction(i));
