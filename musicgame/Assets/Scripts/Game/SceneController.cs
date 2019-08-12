@@ -64,6 +64,8 @@ namespace Game
         Text lifeText;
         [SerializeField]
         Text comboText;
+        [SerializeField]
+        Text TimeText;
 
         float previousTime = 0f;
         SongData song;
@@ -78,6 +80,7 @@ namespace Game
         int noteQuantity;
         MatchCollection mc = null;
         Boolean inOver = false;
+        float time1 = 0;
 
 
         /*Button[] Hits = new Button[]
@@ -89,7 +92,8 @@ namespace Game
             KeyCode.S, KeyCode.D, KeyCode.F, KeyCode.J, KeyCode.K, KeyCode.L
        };
 
-    int Life
+    
+        int Life
         {
             set
             {
@@ -204,6 +208,8 @@ namespace Game
 
         void Update()
         {
+            time1 = Time.timeSinceLevelLoad;
+            TimeText.text = string.Format("Time: {0}", time1);
             //Debug.Log("遊戲時間為:"+Time.time);
             // キーボード入力も可能に
             for (var i = 0; i < keys.Length; i++)
@@ -229,7 +235,7 @@ namespace Game
                 // ノートを生成
                 var audioLength = audioManager.bgm.clip.length;
                 var bgmTime = audioManager.bgm.time;
-                if (Time.time >= audioLength+3 && inOver==false)
+                if (time1 >= audioLength+3 && inOver==false)
                 {
                      inOver = true;
                      Instantiate(gameOverCanvasPrefab, Vector2.zero, Quaternion.identity);
