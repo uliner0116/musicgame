@@ -18,6 +18,6 @@ public class SettingChange : MonoBehaviour {
 
     public void SettingChangeClick()
     {
-      // songData.NoteVolume = MusicPlayer
+        //songData.NoteVolume = MusicPlayer
     }
 }

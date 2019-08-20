@@ -2517,7 +2517,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1016658797
 GameObject:
@@ -4505,11 +4505,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1672525258}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 16549d7682f5b9944b9c2631733d032a, type: 3}
+  m_Script: {fileID: 11500000, guid: d93afef8a4c409246ad80d04b4d4d715, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Btn_Prefab: {fileID: 1220902615}
-  FloderPath: C:\
 --- !u!1 &1677641497
 GameObject:
   m_ObjectHideFlags: 0
@@ -6162,7 +6160,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4225879283151282, guid: 863863c9cfac4495392ace64acb22b9f, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 82820143173119776, guid: 863863c9cfac4495392ace64acb22b9f,
         type: 2}

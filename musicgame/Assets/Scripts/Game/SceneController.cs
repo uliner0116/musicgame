@@ -75,12 +75,19 @@ namespace Game
         int maxLife;
         int life;
         public int score;
-        int combo;
-        public int maxCombo=0;
-        int noteQuantity;
+        public int combo;
+        public int maxCombo = 0;
+        public int noteQuantity;
+        public int perfectNum;
+        public int greatNum;
+        public int goodNum;
+        public int badNum;
+        public int missNum;
+        public string songName;
         MatchCollection mc = null;
         Boolean inOver = false;
         float time1 = 0;
+        public int maxScore;
 
 
         /*Button[] Hits = new Button[]
@@ -92,7 +99,7 @@ namespace Game
             KeyCode.S, KeyCode.D, KeyCode.F, KeyCode.J, KeyCode.K, KeyCode.L
        };
 
-    
+
         int Life
         {
             set
@@ -103,7 +110,7 @@ namespace Game
                     life = 0;
                     gameOverPanel.SetActive(true);
                 }
-                lifeText.text = string.Format("Life: {0}", life);
+                lifeText.text = string.Format("Life:" + life);
             }
             get { return life; }
         }
@@ -118,14 +125,14 @@ namespace Game
             get { return score; }
         }
 
-       public int Combo
+        public int Combo
         {
             set
             {
                 combo = value;
-                if(combo >= 50 && combo % 5 == 0)//生命回復
+                if (combo >= 50 && combo % 5 == 0)//生命回復
                 {
-                    if(life< maxLife)
+                    if (life < maxLife)
                     {
                         Life++;
                     }
@@ -139,7 +146,7 @@ namespace Game
             get { return combo; }
         }
 
-         
+
 
 
         void Start()
@@ -147,10 +154,11 @@ namespace Game
             Debug.Log("star");
             this.songDataAsset = songData.songDataAsset;
             audioManager.bgm.clip = songData.audio;
+            songName = audioManager.bgm.clip.name;
             pauseEnabled = false;
             Time.timeScale = 1;
 
-            
+
             // フレームレート設定
             Application.targetFrameRate = 60;
 
@@ -160,7 +168,7 @@ namespace Game
             Combo = 0;
             retryButton.onClick.AddListener(OnRetryButtonClick);
             stopButton.onClick.AddListener(Stop);
-            
+
 
 
             // ボタンのリスナー設定と最終タップ時間の初期化
@@ -172,7 +180,7 @@ namespace Game
             Debug.Log("Hits.Length" + Hits.Length);
             for (int i = 0; i < Hits.Length; i++)
             {
-                Debug.Log("set"+i);
+                Debug.Log("set" + i);
                 Hits[i].onClick.AddListener(GetOnNoteButtonClickAction(i));
                 lastTappedMilliseconds.Add(Hits[i], 0);
             }
@@ -201,8 +209,10 @@ namespace Game
             Regex re = new Regex("time");
             mc = re.Matches(songDataAsset.text);
             noteQuantity = mc.Count;
-            Debug.Log("noteQuantity" + noteQuantity);
+            setMaxScore();
+            // Debug.Log("noteQuantity" + noteQuantity);
             audioManager.bgm.PlayDelayed(1f);
+            //audioManager.bgm.time = 30;
 
         }
 
@@ -213,53 +223,68 @@ namespace Game
             //Debug.Log("遊戲時間為:"+Time.time);
             // キーボード入力も可能に
             for (var i = 0; i < keys.Length; i++)
+            {
+                //接收觸及改這邊
+                if (Input.GetKeyDown(keys[i]))
                 {
-                    //接收觸及改這邊
-                    if (Input.GetKeyDown(keys[i]))
-                    {
-                        noteButtons[i].onClick.Invoke();
-                    }
+                    noteButtons[i].onClick.Invoke();
                 }
-                /*if (MobileInput())
+            }
+            /*if (MobileInput())
+            {
+                Debug.Log("touch");
+                int i;
+                i = Collision();
+                if (i != 5)
                 {
-                    Debug.Log("touch");
-                    int i;
-                    i = Collision();
-                    if (i != 5)
-                    {
-                        Debug.Log(i);
-                        noteButtons[i].onClick.Invoke();
-                    }
-                }*/
+                    Debug.Log(i);
+                    noteButtons[i].onClick.Invoke();
+                }
+            }*/
 
-                // ノートを生成
-                var audioLength = audioManager.bgm.clip.length;
-                var bgmTime = audioManager.bgm.time;
-                if (time1 >= audioLength+3 && inOver==false)
+            // ノートを生成
+            var audioLength = audioManager.bgm.clip.length;
+            var bgmTime = audioManager.bgm.time;
+            if (time1 >= audioLength + 3 && inOver == false)
+            {
+                inOver = true;
+                Debug.Log("prefect:" + perfectNum);
+                Debug.Log("great:" + greatNum);
+                Debug.Log("good:" + goodNum);
+                Debug.Log("bad:" + badNum);
+                Debug.Log("miss:" + missNum);
+                Instantiate(gameOverCanvasPrefab, Vector2.zero, Quaternion.identity);
+            }
+            else
+            {
+                foreach (var note in song.GetNotesBetweenTime(previousTime + PRE_NOTE_SPAWN_TIME, bgmTime + PRE_NOTE_SPAWN_TIME))
                 {
-                     inOver = true;
-                     Instantiate(gameOverCanvasPrefab, Vector2.zero, Quaternion.identity);
+                    var obj = noteObjectPool.FirstOrDefault(x => !x.gameObject.activeSelf);
+                    var positionX = noteButtons[note.NoteNumber].transform.localPosition.x;
+                    obj.Initialize(this, audioManager.bgm, note, positionX);
                 }
-                else
-                {
-                    foreach (var note in song.GetNotesBetweenTime(previousTime + PRE_NOTE_SPAWN_TIME, bgmTime + PRE_NOTE_SPAWN_TIME))
-                    {
-                        var obj = noteObjectPool.FirstOrDefault(x => !x.gameObject.activeSelf);
-                        var positionX = noteButtons[note.NoteNumber].transform.localPosition.x;
-                        obj.Initialize(this, audioManager.bgm, note, positionX);
-                    }
-                    previousTime = bgmTime;
-                }
-         }
-          
-        void Stop()
-             {
-                Time.timeScale = 0;
-                audioManager.bgm.Pause();
-                Debug.Log("Stop");
-                pauseEnabled = true;
+                previousTime = bgmTime;
+            }
         }
-  
+        void setMaxScore()
+        {
+            
+            for (int i = 0; i < noteQuantity; i++)
+            {
+                float v = 1+((float)i/(float)noteQuantity);
+                maxScore = Convert.ToInt32(maxScore + ( 1000 * v));
+            }
+            Debug.Log("maxScore:" + maxScore);
+        }
+
+        void Stop()
+        {
+            Time.timeScale = 0;
+            audioManager.bgm.Pause();
+            Debug.Log("Stop");
+            pauseEnabled = true;
+        }
+
         void OnGUI()
         {
             if (pauseEnabled == true)
@@ -303,6 +328,7 @@ namespace Game
             //Score += 1000;
             ScoreDouble(1000);
             Combo++;
+            perfectNum++;
         }
 
         void OnNoteGreat(int noteNumber)
@@ -311,7 +337,9 @@ namespace Game
             //Score += 500;
             ScoreDouble(500);
             Combo++;
+            greatNum++;
         }
+
 
         void OnNoteGood(int noteNumber)
         {
@@ -319,6 +347,7 @@ namespace Game
             //Score += 300;
             ScoreDouble(300);
             Combo++;
+            goodNum++;
         }
 
         void OnNoteBad(int noteNumber)
@@ -326,11 +355,12 @@ namespace Game
             ShowMessage("Bad", Color.gray, noteNumber);
             Life--;
             Combo = 0;
+            badNum++;
         }
 
         void ScoreDouble(int up)//依combo高低調整分數上升幅度
         {
-            Score = (score+up) * (1 + combo / 150);
+            Score = (score + up) * (1 + combo / noteQuantity);
         }
 
         public void OnNoteMiss(int noteNumber)
@@ -338,6 +368,7 @@ namespace Game
             ShowMessage("Miss", Color.black, noteNumber);
             Life--;
             Combo = 0;
+            missNum++;
         }
 
         void ShowMessage(string message, Color color, int noteNumber)
@@ -531,7 +562,7 @@ namespace Game
             //判断点是在蓝盘中还是红盘中
 
             int radius = 50 * 50;
-            if ((((-360 - m_screenPos.x) * (-360 - m_screenPos.x)) + (( - m_screenPos.y) * (0 - m_screenPos.y))) < radius)
+            if ((((-360 - m_screenPos.x) * (-360 - m_screenPos.x)) + ((-m_screenPos.y) * (0 - m_screenPos.y))) < radius)
             {
                 return 0;
             }
@@ -559,3 +590,4 @@ namespace Game
         }
     }
 }
+
