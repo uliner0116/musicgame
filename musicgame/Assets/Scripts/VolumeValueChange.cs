@@ -4,12 +4,13 @@ public class VolumeValueChange : MonoBehaviour
 {
 
     // Reference to Audio Source component
-    public AudioSource audioSrc;
+    public AudioSource audioBgm;
+    public AudioSource audioNote;
 
     // Music volume variable that will be modified
     // by dragging slider knob
-    private float musicVolume = 1f;
-
+    private float BgmVolume = 1f;
+    private float NoteVolume = 1f;
     // Use this for initialization
     void Start()
     {
@@ -23,14 +24,20 @@ public class VolumeValueChange : MonoBehaviour
     {
 
         // Setting volume option of Audio Source to be equal to musicVolume
-        audioSrc.volume = musicVolume;
+        audioBgm.volume = BgmVolume;
+        audioNote.volume = NoteVolume;
     }
 
     // Method that is called by slider game object
     // This method takes vol value passed by slider
     // and sets it as musicValue
-    public void SetVolume(float vol)
+    public void SetBgmVolume(float vol)
     {
-        musicVolume = vol;
+        BgmVolume = vol;
+    }
+
+    public void SetNoteVolume(float vol)
+    {
+        NoteVolume = vol;
     }
 }
