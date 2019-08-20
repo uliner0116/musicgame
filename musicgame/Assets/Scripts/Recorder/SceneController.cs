@@ -100,7 +100,7 @@ namespace Recorder
                 // 録音したノート音を再生
                 foreach (var note in song.GetNotesBetweenTime(previousTime, bgmTime))
                 {
-                    audioManager.notes[note.NoteNumber].Play();
+                    audioManager.note.Play();
                     noteButtons[note.NoteNumber].Select();
                     StartCoroutine(DeselectCoroutine(noteButtons[note.NoteNumber]));
                 }
@@ -177,7 +177,7 @@ namespace Recorder
                 }
 
                 song.AddNote(audioManager.bgm.time, noteNo);
-                audioManager.notes[noteNo].Play();
+                audioManager.note.Play();
                 noteButtons[noteNo].Select();
                 StartCoroutine(DeselectCoroutine(noteButtons[noteNo]));
             };

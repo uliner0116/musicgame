@@ -8,7 +8,7 @@ namespace Common
     public class AudioManager : MonoBehaviour
     {
         public AudioSource bgm;
-        public AudioSource[] notes;
+        public AudioSource note;
         private void Start()
         {
             //this.bgm.clip = songData.audio;

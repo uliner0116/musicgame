@@ -10,6 +10,7 @@ using Common;
 using Common.Data;
 using System.Threading;
 using System.Text.RegularExpressions;
+using System.IO;
 
 namespace Game
 {
@@ -88,6 +89,8 @@ namespace Game
         Boolean inOver = false;
         float time1 = 0;
         public int maxScore;
+        float volume;
+
 
 
         /*Button[] Hits = new Button[]
@@ -154,6 +157,14 @@ namespace Game
             Debug.Log("star");
             this.songDataAsset = songData.songDataAsset;
             audioManager.bgm.clip = songData.audio;
+            //bgm音量設定
+            loadVolume("audioBgm");
+            audioManager.bgm.volume = volume;
+            //note音量設定
+            loadVolume("audioNote");
+            audioManager.note.volume = volume;
+            Debug.Log("bgm" + audioManager.bgm.volume);
+            Debug.Log("note" + audioManager.note.volume);
             songName = audioManager.bgm.clip.name;
             pauseEnabled = false;
             Time.timeScale = 1;
@@ -265,6 +276,26 @@ namespace Game
                 }
                 previousTime = bgmTime;
             }
+        }
+        public void loadVolume(string name)
+        {
+            //讀取json檔案並轉存成文字格式
+            StreamReader file = new StreamReader(System.IO.Path.Combine(Application.streamingAssetsPath, name));
+            string loadJson = file.ReadToEnd();
+            file.Close();
+
+            //新增一個物件類型為playerState的變數 loadData
+            volumeState loadData = new volumeState();
+
+            //使用JsonUtillty的FromJson方法將存文字轉成Json
+            loadData = JsonUtility.FromJson<volumeState>(loadJson);
+
+            //驗證用，將sammaru的位置變更為json內紀錄的位置
+            volume = loadData.volume;
+        }
+        public class volumeState
+        {
+            public float volume;
         }
         void setMaxScore()
         {
@@ -412,7 +443,7 @@ namespace Game
                     return;
                 }
 
-                audioManager.notes[noteNo].Play();
+                audioManager.note.Play();
                 noteButtons[noteNo].image.color = highlightButtonColor;
                 StartCoroutine(DeselectCoroutine(noteButtons[noteNo]));
                 lastTappedMilliseconds[noteButtons[noteNo]] = DateTime.Now.Millisecond;
