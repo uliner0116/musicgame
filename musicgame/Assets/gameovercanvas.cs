@@ -15,6 +15,8 @@ public class gameovercanvas : MonoBehaviour
     public Text goodP;
     public Text badP;
     public Text missP;
+    public Slider ScoreStrip;
+    public Slider HighScoreStrip;
 
     int score;
     int combo;
@@ -51,8 +53,10 @@ public class gameovercanvas : MonoBehaviour
         misspersent = ((float)GameObject.FindObjectOfType<Game.SceneController>().missNum / (float)noteQuantity) * 100;
 
         //分數條
-        maxScore = GameObject.FindObjectOfType<Game.SceneController>().maxScore;//本曲上限分數       
-
+        maxScore = GameObject.FindObjectOfType<Game.SceneController>().maxScore;//本曲上限分數 
+        //顯示分數條
+        ScoreStrip.maxValue = maxScore;
+        ScoreStrip.value = score;
         //顯示
         finalscore.text = string.Format("Score: {0}", score);
         Debug.Log("Score:"+ score);
@@ -68,6 +72,10 @@ public class gameovercanvas : MonoBehaviour
         goodP.text = string.Format("Good:"+ goodpersent.ToString("#0.0") + "%");
         badP.text = string.Format("Bad:"+ badpersent.ToString("#0.0") + "%");
         missP.text = string.Format("Miss:"+ misspersent.ToString("#0.0") + "%");
+
+        //最高紀錄分數條
+        HighScoreStrip.maxValue = maxScore;
+        HighScoreStrip.value = myBestScore;
 
         Debug.Log("HighScore:" + myBestScore);
         Debug.Log("Perfect:" + prefectpersent.ToString("#0.0"));
