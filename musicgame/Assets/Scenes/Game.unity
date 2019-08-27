@@ -265,7 +265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenuSceneName: Menu
   gameName: Game
-  gameOverCanvasPrefab: {fileID: 1014032274503810, guid: 5e9ae4e5fc4f22245b8e4bf1e4fa0ad7,
+  gameOverCanvasPrefab: {fileID: 1871702062515018, guid: 5e9ae4e5fc4f22245b8e4bf1e4fa0ad7,
     type: 2}
   m_screenPos: {x: 0, y: 0}
   audioManager: {fileID: 653557041}
