@@ -5,15 +5,41 @@ using UnityEngine.UI;    // 記得加這行
 
 public class ChangeNote : MonoBehaviour
 {
+    public Text noteNumberText;
+    int NoteNumber = 1;
+    public string name;
 
-    int NoteNumber = 0;
+    void Start()
+    {
+        this.GetComponent<Button>().onClick.AddListener(noteChangeClick);
+    }
 
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+     
+    }
+    public void noteChangeClick()
+    {
+        NoteNumber = int.Parse(noteNumberText.text);
+        if (string.Compare(name, "right") == 0 )
         {
-            NoteNumber = NoteNumber + 1;    // 也能簡寫為 a++; 或 a+=1;
-            GetComponent<Text>().text = "" + NoteNumber;    // 前面加空字串，是為了把 整數a 轉為 字串。
+           
+            NoteNumber++;
+            if (NoteNumber > 4)
+            {
+                NoteNumber = 1;
+            }
+            noteNumberText.text = "" + NoteNumber; ;
+           
+        }else if (string.Compare(name, "left") == 0)
+        {
+  
+            NoteNumber--;
+            if (NoteNumber <1)
+            {
+                NoteNumber = 4;
+            }
+            noteNumberText.text = "" + NoteNumber; ;
         }
     }
 }

@@ -90,6 +90,7 @@ namespace Game
         float time1 = 0;
         public int maxScore;
         float volume;
+        AudioClip noteAudio;
 
 
 
@@ -163,6 +164,9 @@ namespace Game
             //note音量設定
             loadVolume("audioNote");
             audioManager.note.volume = volume;
+            //note音設定
+            loadNoteAudio("notePlay");
+            audioManager.note.clip = noteAudio;
             Debug.Log("bgm" + audioManager.bgm.volume);
             Debug.Log("note" + audioManager.note.volume);
             songName = audioManager.bgm.clip.name;
@@ -293,9 +297,29 @@ namespace Game
             //驗證用，將sammaru的位置變更為json內紀錄的位置
             volume = loadData.volume;
         }
+        public void loadNoteAudio(string name)
+        {
+            //讀取json檔案並轉存成文字格式
+            StreamReader file = new StreamReader(System.IO.Path.Combine(Application.streamingAssetsPath, name));
+            string loadJson = file.ReadToEnd();
+            file.Close();
+
+            //新增一個物件類型為playerState的變數 loadData
+            noteState loadData = new noteState();
+
+            //使用JsonUtillty的FromJson方法將存文字轉成Json
+            loadData = JsonUtility.FromJson<noteState>(loadJson);
+
+            //驗證用，將sammaru的位置變更為json內紀錄的位置
+            noteAudio = loadData.noteAudio;
+        }
         public class volumeState
         {
             public float volume;
+        }
+        public class noteState
+        {
+            public AudioClip noteAudio = null;
         }
         void setMaxScore()
         {
