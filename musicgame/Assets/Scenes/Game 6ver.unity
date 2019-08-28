@@ -265,7 +265,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainMenuSceneName: Menu
   gameName: Game
-  gameOverCanvasPrefab: {fileID: 1885289915915730, guid: 94584587cf1e1b746bb4aa1e3b78ea4f,
+  gameOverCanvasPrefab: {fileID: 1546627192085556, guid: 94584587cf1e1b746bb4aa1e3b78ea4f,
     type: 2}
   m_screenPos: {x: 0, y: 0}
   audioManager: {fileID: 653557041}
@@ -552,7 +552,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 160.42993, y: 0.39502}
+  m_AnchoredPosition: {x: 160.42993, y: 0.39501953}
   m_SizeDelta: {x: 320, y: 6.3923}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &518352402
@@ -809,7 +809,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -159.57, y: 1.9909}
+  m_AnchoredPosition: {x: -159.57, y: 1.9909058}
   m_SizeDelta: {x: 320, y: 3.2007}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &650251697
@@ -2748,7 +2748,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.17175001, y: 0}
   m_AnchorMax: {x: 0.17175001, y: 1}
-  m_AnchoredPosition: {x: -169.61, y: 0.39043}
+  m_AnchoredPosition: {x: -169.60999, y: 0.3904419}
   m_SizeDelta: {x: 320, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1125510449
@@ -3999,7 +3999,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -479.57, y: -3.2037}
+  m_AnchoredPosition: {x: -479.57, y: -3.2036743}
   m_SizeDelta: {x: 320, y: 13.59}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1972518334
