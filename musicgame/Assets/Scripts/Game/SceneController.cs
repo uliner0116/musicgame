@@ -165,18 +165,27 @@ namespace Game
                 this.songDataAsset = songData.Line6SongDataAsset;
             }
             audioManager.bgm.clip = songData.audio;
-            //bgm音量設定
-            loadVolume("audioBgm");
-            audioManager.bgm.volume = volume;
+            
             //note音量設定
             loadVolume("audioNote");
             audioManager.note.volume = volume;
+
             //note音設定
             loadNoteAudio("notePlay");
             audioManager.note.clip = noteAudio;
             Debug.Log("bgm" + audioManager.bgm.volume);
             Debug.Log("note" + audioManager.note.volume);
             songName = audioManager.bgm.clip.name;
+
+            //bgm音量設定
+            string name;
+            name = songName;
+            string txtName;
+            txtName = name + " Audio";
+            Debug.Log("txtName " + txtName);
+            loadVolume(txtName);
+            audioManager.bgm.volume = volume;
+
             pauseEnabled = false;
             Time.timeScale = 1;
 

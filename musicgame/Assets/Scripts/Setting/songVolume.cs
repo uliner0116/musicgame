@@ -25,7 +25,8 @@ public class songVolume : MonoBehaviour {
         string name;
         name = transform.name;
         string txtName;
-        txtName = name + "Audio";
+        txtName = name + " Audio";
+        Debug.Log("txtName " + txtName);
         volumeState myVlume = new volumeState();
         myVlume.volume = audioBgm.volume;
         //將myPlayer轉換成json格式的字串

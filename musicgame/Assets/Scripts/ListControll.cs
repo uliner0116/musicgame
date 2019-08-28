@@ -13,8 +13,9 @@ public class ListControll : MonoBehaviour
     Vector2 sampleSize;
 
     void Start()
-    {
+    {      
         audioBgm.Play(30);
+        audioBgm.volume = 0.5f;
         sampleSize = GetComponent<RectTransform>().sizeDelta;
     }
 
