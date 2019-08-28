@@ -20,18 +20,18 @@ public class ListControll : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            Next();
-        }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            Previous();
-        }
+       // if (Input.GetKeyDown(KeyCode.RightArrow))
+       // {
+        //    Next();
+       // }
+       // else if (Input.GetKeyDown(KeyCode.LeftArrow))
+       // {
+       //     Previous();
+       // }
         Refresh();
     }
 
-    void Next()
+    public void Next()
     {
         if (locked)
             return;
@@ -46,7 +46,7 @@ public class ListControll : MonoBehaviour
         targetPosition[current].x = 0;
         StartCoroutine("Lock");
     }
-    void Previous()
+    public void Previous()
     {
         if (locked)
             return;

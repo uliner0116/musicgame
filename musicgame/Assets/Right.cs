@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SixGame : MonoBehaviour
+public class Right : MonoBehaviour
 {
 
     void Start()
