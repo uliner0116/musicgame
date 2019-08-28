@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class ListButton : MonoBehaviour
 {
-
+    public int line;
     //點擊時呼叫
     public void OnPathClick()
     {
@@ -34,10 +34,26 @@ public class ListButton : MonoBehaviour
         //Game.SceneController.songDataAsset= Resources.Load<TextAsset>(noteTxt);
         //songData.audio = www.GetAudioClip();
         songData.audio = Resources.Load<AudioClip>("Audios/cAudio/"+ transform.name);
-        songData.songDataAsset = Resources.Load<TextAsset>("6linetxt/" + transform.name+"/"+ transform.name);
+        if(line == 3)
+        {
+            songData.Line3SongDataAsset = Resources.Load<TextAsset>("3linetxt/" + transform.name+"/"+ transform.name);
+            Debug.Log("Line3SongDataAsset:" + songData.Line3SongDataAsset.name);
+        }else if (line == 6)
+        {
+            songData.Line6SongDataAsset = Resources.Load<TextAsset>("6linetxt/" + transform.name + "/" + transform.name);
+            Debug.Log("Line6SongDataAsset:" + songData.Line6SongDataAsset.name);
+        }
         Debug.Log("audio:" + songData.audio.name);
-        Debug.Log("songDataAsset:" + songData.songDataAsset.name);
-        SceneManager.LoadScene("Game");
+        
+        
+        if(line == 3)
+        {
+            SceneManager.LoadScene("Game 3ver");
+        }else if (line == 6)
+        {
+            SceneManager.LoadScene("Game 6ver");
+        }
+
         //}
     }
     // Use this for initialization

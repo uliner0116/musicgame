@@ -75,6 +75,7 @@ namespace Game
         List<MessageObject> messageObjectPool = new List<MessageObject>();
         int maxLife;
         int life;
+        public int Line;
         public int score;
         public int combo;
         public int maxCombo = 0;
@@ -156,7 +157,13 @@ namespace Game
         void Start()
         {
             Debug.Log("star");
-            this.songDataAsset = songData.songDataAsset;
+            if(Line == 3)
+            {
+                this.songDataAsset = songData.Line3SongDataAsset;
+            }else if (Line == 6)
+            {
+                this.songDataAsset = songData.Line6SongDataAsset;
+            }
             audioManager.bgm.clip = songData.audio;
             //bgm音量設定
             loadVolume("audioBgm");
