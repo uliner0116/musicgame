@@ -7,13 +7,14 @@ public class ListControll : MonoBehaviour
 
     public RectTransform[] pages;
     public Vector2[] targetPosition;
-
+    public AudioSource audioBgm;
     int current = 0;
     bool locked = false;
     Vector2 sampleSize;
 
     void Start()
     {
+        audioBgm.Play(30);
         sampleSize = GetComponent<RectTransform>().sizeDelta;
     }
 
@@ -43,8 +44,10 @@ public class ListControll : MonoBehaviour
             current = 0;
 
         pages[current].anchoredPosition = new Vector2(-1920f, 0);
+        audioBgm.clip = Resources.Load<AudioClip>("Audios/cAudio/" + pages[current].name);
         targetPosition[current].x = 0;
         StartCoroutine("Lock");
+        audioBgm.Play(30);
     }
     public void Previous()
     {
@@ -58,8 +61,10 @@ public class ListControll : MonoBehaviour
             current = pages.Length - 1;
 
         pages[current].anchoredPosition = new Vector2(1920f, 0);
+        audioBgm.clip = Resources.Load<AudioClip>("Audios/cAudio/" + pages[current].name);
         targetPosition[current].x = 0;
         StartCoroutine("Lock");
+        audioBgm.Play(30);
     }
 
     void Refresh()
