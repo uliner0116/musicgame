@@ -8,7 +8,7 @@ public class ListControll : MonoBehaviour
     public RectTransform[] pages;
     public Vector2[] targetPosition;
     public AudioSource audioBgm;
-    int current = 0;
+    int current = 10;
     bool locked = false;
     Vector2 sampleSize;
 
@@ -60,7 +60,7 @@ public class ListControll : MonoBehaviour
         current--;
         if (current < 0)
             current = pages.Length - 1;
-
+        
         pages[current].anchoredPosition = new Vector2(1920f, 0);
         audioBgm.clip = Resources.Load<AudioClip>("Audios/cAudio/" + pages[current].name);
         targetPosition[current].x = 0;
