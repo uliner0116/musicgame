@@ -11,10 +11,10 @@ public class ThreePage1 : MonoBehaviour
     public float DistancesNum = 250f;
     public float min = 0.8f;
     public float max = 1.4f;
-
     public float speed = 0.2f;
     public float Alpha = 0.8f;
 
+    bool locked = false;
 
     void Start()
     {
@@ -47,8 +47,10 @@ public class ThreePage1 : MonoBehaviour
         }
     }
 
-    public void OnLeftButtonClick()
+    public void OnRightButtonClick()
     {
+        if (locked)
+            return;
 
         if (currentIndex < images.Length - 1)
         {
@@ -89,11 +91,13 @@ public class ThreePage1 : MonoBehaviour
                 }
             }
         }
+        StartCoroutine("Lock");
     }
 
-    public void OnRightButtonClick()
+    public void OnLeftButtonClick()
     {
-
+        if (locked)
+            return;
 
         if (currentIndex > 0)
         {
@@ -134,5 +138,12 @@ public class ThreePage1 : MonoBehaviour
                 }
             }
         }
+        StartCoroutine("Lock");
+    }
+    IEnumerator Lock()
+    {
+        locked = true;
+        yield return new WaitForSeconds(0.2f);
+        locked = false;
     }
 }
