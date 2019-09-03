@@ -16,7 +16,7 @@ namespace Game
         Image image;
         [SerializeField]
         SceneController sceneController;
-        AudioSource bgm;
+        public AudioSource bgm;
         SongData.Note note;
         public  float positionX;
 
@@ -35,6 +35,7 @@ namespace Game
         {
  
                 var timeDiff = note.Time - bgm.time;
+                
                 if (timeDiff < -SceneController.BAD_BORDER)
                 {
                     sceneController.OnNoteMiss(NoteNumber);
@@ -42,8 +43,9 @@ namespace Game
                 }
 
                 GetComponent<RectTransform>().localPosition = new Vector3(positionX,
-                                                    baseY + timeDiff * 800f,
+                                                    baseY + timeDiff * 1000f,
                                                     transform.localPosition.z);
+            
         }
 
         public void Initialize(SceneController sceneController, AudioSource bgm, SongData.Note note, float positionX)
@@ -57,9 +59,9 @@ namespace Game
             switch (note.NoteNumber)
             {
                 case 1:
-                case 3:
+               /* case 3:
                     image.color = Color.green;
-                    break;
+                    break;*/
                 default:
                     image.color = Color.white;
                     break;

@@ -497,6 +497,7 @@ namespace Game
                 }
 
                 var timeDiff = targetNoteObject.AbsoluteTimeDiff;
+                Debug.Log("hit time: " + targetNoteObject.bgm.time);
                 if (timeDiff <= PERFECT_BORDER)
                 {
                     OnNotePerfect(targetNoteObject.NoteNumber);
