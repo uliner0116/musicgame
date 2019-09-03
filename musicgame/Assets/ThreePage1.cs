@@ -25,12 +25,12 @@ public class ThreePage1 : MonoBehaviour
         currentIndex = images.Length / 2;
         for (int i = currentIndex + 1; i < images.Length; i++)
         {
-            images[i].GetComponent<RectTransform>().anchoredPosition = new Vector3((i - currentIndex) * DistancesNum, -400f, 0);
+            images[i].GetComponent<RectTransform>().anchoredPosition = new Vector3((i - currentIndex) * DistancesNum, 0, 0);
         }
         int num = 0;
         for (int i = currentIndex; i >= 0; i--)
         {
-            images[i].GetComponent<RectTransform>().anchoredPosition = new Vector3(-num * DistancesNum, -400f, 0);
+            images[i].GetComponent<RectTransform>().anchoredPosition = new Vector3(-num * DistancesNum, 0, 0);
             num++;
         }
         foreach (var item in images)
@@ -70,12 +70,12 @@ public class ThreePage1 : MonoBehaviour
             currentIndex = 0;
             for (int i = currentIndex + 1; i < images.Length; i++)
             {
-                images[i].GetComponent<RectTransform>().anchoredPosition = new Vector3((i - currentIndex) * DistancesNum, -400f, 0);
+                images[i].GetComponent<RectTransform>().anchoredPosition = new Vector3((i - currentIndex) * DistancesNum, 0, 0);
             }
             int num = 0;
             for (int i = currentIndex; i >= 0; i--)
             {
-                images[i].GetComponent<RectTransform>().anchoredPosition = new Vector3(-num * DistancesNum, -400f, 0);
+                images[i].GetComponent<RectTransform>().anchoredPosition = new Vector3(-num * DistancesNum, 0, 0);
                 num++;
             }
             foreach (var item in images)
@@ -117,12 +117,12 @@ public class ThreePage1 : MonoBehaviour
             currentIndex = images.Length - 1;
             for (int i = currentIndex + 1; i < images.Length; i++)
             {
-                images[i].GetComponent<RectTransform>().anchoredPosition = new Vector3((i - currentIndex) * DistancesNum, -400f, 0);
+                images[i].GetComponent<RectTransform>().anchoredPosition = new Vector3((i - currentIndex) * DistancesNum, 0, 0);
             }
             int num = 0;
             for (int i = currentIndex; i >= 0; i--)
             {
-                images[i].GetComponent<RectTransform>().anchoredPosition = new Vector3(-num * DistancesNum, -400f, 0);
+                images[i].GetComponent<RectTransform>().anchoredPosition = new Vector3(-num * DistancesNum, 0, 0);
                 num++;
             }
             foreach (var item in images)
