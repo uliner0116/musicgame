@@ -77,6 +77,7 @@ public class gameovercanvas : MonoBehaviour
         HighScoreStrip.maxValue = maxScore;
         HighScoreStrip.value = myBestScore;
 
+
       //  Debug.Log("HighScore:" + myBestScore);
         Debug.Log("Perfect:" + prefectpersent.ToString("#0.0"));
         Debug.Log("Great:" + greattpersent.ToString("#0.0"));
