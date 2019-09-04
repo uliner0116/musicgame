@@ -16,7 +16,7 @@ namespace Game
 {
     public class SceneController : MonoBehaviour
     {
-
+        public GameObject page;
         public string mainMenuSceneName;
         public string gameName;
         private bool pauseEnabled = false;
@@ -350,49 +350,36 @@ namespace Game
 
         void Stop()
         {
+            page.SetActive(true);
             Time.timeScale = 0;
             audioManager.bgm.Pause();
             Debug.Log("Stop");
             pauseEnabled = true;
         }
 
-        void OnGUI()
+
+
+
+
+        
+        public void BackMenu()//Make Main Menu button
         {
-            if (pauseEnabled == true)
-            {
-
-
-                //Make a background box
-                GUI.Box(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 100, 250, 200), "Pause Menu");
-
-                //Make Main Menu button
-                if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 - 50, 250, 50), "Main Menu"))
-                {
-                    Application.LoadLevel(mainMenuSceneName);
-                }
-
-                //Make Change Graphics Quality button
-                if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2, 250, 50), "Retry"))
-                {
-
-                    Application.LoadLevel(gameName);
-                }
-
-                if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 50, 250, 50), "Back Game"))
-                {
-                    Time.timeScale = 1;
-                    audioManager.bgm.UnPause();
-                    Debug.Log("UnStop");
-                    pauseEnabled = false;
-                }
-
-                //Make quit game button
-                if (GUI.Button(new Rect(Screen.width / 2 - 100, Screen.height / 2 + 100, 250, 50), "Quit Game"))
-                {
-                    Application.Quit();
-                }
-            }
+            Application.LoadLevel(mainMenuSceneName);
         }
+
+        public void Retry()
+        {
+            Application.LoadLevel(gameName);
+        }
+        public void BackGame()
+        {
+            page.SetActive(false);
+            Time.timeScale = 1;
+            audioManager.bgm.UnPause();
+            Debug.Log("UnStop");
+            pauseEnabled = false;
+        }
+         
         void OnNotePerfect(int noteNumber)
         {
             ShowMessage("Perfect", Color.yellow, noteNumber);
