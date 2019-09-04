@@ -66,7 +66,7 @@ public class gameovercanvas : MonoBehaviour
         Debug.Log("Combo:" + combo);
         string perfectText = "Perfect:" + prefectpersent.ToString("#0.0") + "%";
         Debug.Log("perfectText:" + perfectText);
-        HighScore.text = string.Format("HighScore: {0}", myBestScore);
+      //  HighScore.text = string.Format("HighScore: {0}", myBestScore);
         perfectP.text = string.Format(perfectText);
         greatP.text = string.Format("Great:"+ greattpersent.ToString("#0.0") + "%");
         goodP.text = string.Format("Good:"+ goodpersent.ToString("#0.0") + "%");
@@ -77,7 +77,7 @@ public class gameovercanvas : MonoBehaviour
         HighScoreStrip.maxValue = maxScore;
         HighScoreStrip.value = myBestScore;
 
-        Debug.Log("HighScore:" + myBestScore);
+      //  Debug.Log("HighScore:" + myBestScore);
         Debug.Log("Perfect:" + prefectpersent.ToString("#0.0"));
         Debug.Log("Great:" + greattpersent.ToString("#0.0"));
         Debug.Log("Good:" + goodpersent.ToString("#0.0"));
