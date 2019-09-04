@@ -369,15 +369,24 @@ namespace Game
 
         public void Retry()
         {
-            Application.LoadLevel(gameName);
+            if (Line == 3)
+            {
+                SceneManager.LoadScene("Game 3ver");
+            }
+            else if (Line == 6)
+            {
+                SceneManager.LoadScene("Game 6ver");
+            }
         }
         public void BackGame()
         {
             page.SetActive(false);
+            pauseEnabled = false;          
             Time.timeScale = 1;
+            //Thread.Sleep(3000);
             audioManager.bgm.UnPause();
             Debug.Log("UnStop");
-            pauseEnabled = false;
+            
         }
          
         void OnNotePerfect(int noteNumber)
