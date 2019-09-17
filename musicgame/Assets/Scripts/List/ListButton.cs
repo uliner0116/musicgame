@@ -14,6 +14,14 @@ public class ListButton : MonoBehaviour
     string lineName;
     TextAsset songTxt;
     GameObject father_gameObject;   //宣告一個GameObject(用來放取得的父物件)。
+    //歌名對照表
+    int listNumber=0;
+    string[] songList = new string[]{
+        "butterfly" ,"Don't say lazy" ,"Im sorry" ,"LATATA" ,"LOVE" ,"Mirotic" ,"Oh!" ,"One Night In 北京" ,"PON PON PON" ,"Roly Poly" ,"SORRY SORRY" ,"Trouble Maker" ,"Tunak Tunak Tun" ,
+        "YES or YES" ,"三國戀" ,"千年之戀" ,"不得不愛" ,"月牙灣" ,"回レ! 雪月花" ,"我不配" ,"我還年輕 我還年輕" ,"牡丹江" ,"東區東區" ,"直感" ,"星空" ,"夏祭り" ,"恋" ,"恋は渾沌の隷也" ,
+        "恋愛サーキュレーション" ,"夠愛" ,"將軍令" ,"華陽炎" ,"極楽浄土" ,"憂愁" ,"憨人" ,"樹枝孤鳥"
+    };
+
     //點擊時呼叫
     public void OnPathClick()
     {
@@ -34,7 +42,16 @@ public class ListButton : MonoBehaviour
         father_gameObject = father_gameObject.transform.parent.gameObject;
         //song在三層後 設定音樂名稱
         songName = father_gameObject.name;
-        Debug.Log("songName" + songName);
+        for(int i=1;i<= songList.Length; i++)
+        {
+           if( string.Compare(songList[i-1], songName) == 0)
+            {
+                listNumber = i;
+                songName = "song"+listNumber.ToString("D3");
+                Debug.Log("songName: " + songName);
+                break;
+            }
+        }
 
         level = transform.name;
         Debug.Log("level!" + level);
@@ -60,6 +77,7 @@ public class ListButton : MonoBehaviour
         //Game.SceneController.songDataAsset= Resources.Load<TextAsset>(noteTxt);
         //songData.audio = www.GetAudioClip();
         songData.audio = Resources.Load<AudioClip>("Audios/cAudio/" + songName);
+        Debug.Log("audio: " + songData.audio);
         if (line == 3)
         {
             songTxt = Resources.Load<TextAsset>("3linetxt/" + songName + "/" + songName + "-" + level);

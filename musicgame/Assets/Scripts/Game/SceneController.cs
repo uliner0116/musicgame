@@ -28,6 +28,12 @@ namespace Game
         public const float GOOD_BORDER = 0.2f;
         public const float BAD_BORDER = 0.5f;
         public Vector2 m_screenPos = new Vector2();
+        int listNumber = 0;
+        string[] songList = new string[]{
+            "butterfly" ,"Don't say lazy" ,"Im sorry" ,"LATATA" ,"LOVE" ,"Mirotic" ,"Oh!" ,"One Night In 北京" ,"PON PON PON" ,"Roly Poly" ,"SORRY SORRY" ,"Trouble Maker" ,"Tunak Tunak Tun" ,
+             "YES or YES" ,"三國戀" ,"千年之戀" ,"不得不愛" ,"月牙灣" ,"回レ! 雪月花" ,"我不配" ,"我還年輕 我還年輕" ,"牡丹江" ,"東區東區" ,"直感" ,"星空" ,"夏祭り" ,"恋" ,"恋は渾沌の隷也" ,
+             "恋愛サーキュレーション" ,"夠愛" ,"將軍令" ,"華陽炎" ,"極楽浄土" ,"憂愁" ,"憨人" ,"樹枝孤鳥"
+        };
 
         [SerializeField]
         AudioManager audioManager;
@@ -165,21 +171,31 @@ namespace Game
                 this.songDataAsset = songData.Line6SongDataAsset;
             }
             audioManager.bgm.clip = songData.audio;
-            
+            Life = 1000;
             //note音量設定
             loadVolume("audioNote");
             audioManager.note.volume = volume;
-
+Life = 2500;
             //note音設定
             loadNoteAudio("notePlay");
             audioManager.note.clip = noteAudio;
+            
             Debug.Log("bgm" + audioManager.bgm.volume);
             Debug.Log("note" + audioManager.note.volume);
             songName = audioManager.bgm.clip.name;
-
+            
             //bgm音量設定
-            string name;
-            name = songName;
+            string name = songName;
+            /*for (int i = 1; i <= songList.Length; i++)
+            {
+                if (string.Compare(songList[i], songName) == 0)
+                {
+                    listNumber = i;
+                    name = "song" + listNumber.ToString("D3");
+                    Debug.Log("name: " + name);
+                    break;
+                }
+            } */
             string txtName;
             txtName = name + " Audio";
             Debug.Log("txtName " + txtName);
@@ -245,6 +261,7 @@ namespace Game
             audioManager.bgm.PlayDelayed(1f);
             //audioManager.bgm.time = 30;
 
+
         }
 
         void Update()
@@ -299,11 +316,28 @@ namespace Game
         }
         public void loadVolume(string name)
         {
+            string loadJson;
             //讀取json檔案並轉存成文字格式
-            StreamReader file = new StreamReader(System.IO.Path.Combine(Application.streamingAssetsPath, name));
-            string loadJson = file.ReadToEnd();
+#if UNITY_EDITOR
+            string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, name);
+            Debug.Log("filePath:" + filePath);
+#elif UNITY_ANDROID
+            string filePath = Path.Combine("jar:file://" + Application.dataPath + "!assets/", name);
+
+#endif
+
+#if UNITY_EDITOR
+            StreamReader file = new StreamReader(filePath);
+            loadJson = file.ReadToEnd();
             file.Close();
 
+#elif UNITY_ANDROID
+            WWW reader = new WWW (filePath);
+            while (!reader.isDone) {
+            }
+            loadJson = reader.text;
+#endif
+            Life = 2000;
             //新增一個物件類型為playerState的變數 loadData
             volumeState loadData = new volumeState();
 
@@ -315,10 +349,26 @@ namespace Game
         }
         public void loadNoteAudio(string name)
         {
+            string loadJson;
             //讀取json檔案並轉存成文字格式
-            StreamReader file = new StreamReader(System.IO.Path.Combine(Application.streamingAssetsPath, name));
-            string loadJson = file.ReadToEnd();
+#if UNITY_EDITOR
+            string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, name);
+            Debug.Log("filePath:" + filePath);
+#elif UNITY_ANDROID
+            string filePath = Path.Combine("jar:file://" + Application.dataPath + "!assets/", name);
+
+#endif
+
+#if UNITY_EDITOR
+            StreamReader file = new StreamReader(filePath);
+            loadJson = file.ReadToEnd();
             file.Close();
+#elif UNITY_ANDROID
+            WWW reader = new WWW (filePath);
+            while (!reader.isDone) {
+            }
+            loadJson = reader.text;
+#endif
 
             //新增一個物件類型為playerState的變數 loadData
             noteState loadData = new noteState();

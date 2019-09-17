@@ -36,12 +36,11 @@ public class gameovercanvas : MonoBehaviour
         
         score = GameObject.FindObjectOfType<Game.SceneController>().score;
         songName = GameObject.FindObjectOfType<Game.SceneController>().songName;
-        songNumber = songList.GetSongNumber(songName);
         load();
         Debug.Log("myBestScore:" + myBestScore);
         if (myBestScore == 0)
         {
-            updateMaxScore(score);
+            //updateMaxScore(score);
         }
         load();
         //級距%數
@@ -85,7 +84,7 @@ public class gameovercanvas : MonoBehaviour
         Debug.Log("Bad:" + badpersent.ToString("#0.0"));
         Debug.Log("Miss:" + misspersent.ToString("#0.0"));
 
-        updateMaxScore(score);
+        //updateMaxScore(score);
     }
 
     // Update is called once per frame
@@ -112,10 +111,27 @@ public class gameovercanvas : MonoBehaviour
     }
     public void load()
     {
+        string loadJson;
         //讀取json檔案並轉存成文字格式
-        StreamReader file = new StreamReader(System.IO.Path.Combine(Application.streamingAssetsPath, songName));
-        string loadJson = file.ReadToEnd();
+#if UNITY_EDITOR
+        string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, songName);
+        Debug.Log("filePath:" + filePath);
+#elif UNITY_ANDROID
+            string filePath = Path.Combine("jar:file://" + Application.dataPath + "!assets/", songName);
+
+#endif
+
+#if UNITY_EDITOR
+        StreamReader file = new StreamReader(filePath);
+        loadJson = file.ReadToEnd();
         file.Close();
+
+#elif UNITY_ANDROID
+            WWW reader = new WWW (filePath);
+            while (!reader.isDone) {
+            }
+            loadJson = reader.text;
+#endif
 
         //新增一個物件類型為playerState的變數 loadData
         songState loadData = new songState();

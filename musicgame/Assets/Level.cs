@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using UnityEditor.Sprites ;
+//using UnityEditor.Sprites ;
 public class Level : MonoBehaviour
 {
 
