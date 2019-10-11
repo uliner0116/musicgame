@@ -11,6 +11,7 @@ namespace Game
     public class NoteObject : MonoBehaviour
     {
         public float baseY;
+        public float baseZ;
 
         [SerializeField]
         Image image;
@@ -42,9 +43,9 @@ namespace Game
                     gameObject.SetActive(false);
                 }
 
-                GetComponent<RectTransform>().localPosition = new Vector3(positionX,
-                                                    baseY + timeDiff * 1000f,
-                                                    transform.localPosition.z);
+                GetComponent<Transform>().localPosition = new Vector3(positionX,
+                                                    baseY + timeDiff * 100f,
+                                                    baseZ + timeDiff * 100f);
             
         }
 
@@ -56,16 +57,16 @@ namespace Game
             this.bgm = bgm;
             this.note = note;
             this.positionX = positionX;
-            switch (note.NoteNumber)
+            /*switch (note.NoteNumber)
             {
                 case 1:
                /* case 3:
                     image.color = Color.green;
-                    break;*/
+                    break;
                 default:
                     image.color = Color.white;
                     break;
-            }
+            }*/
 
             Update();
         }

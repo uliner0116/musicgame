@@ -34,7 +34,8 @@ namespace Game
              "YES or YES" ,"三國戀" ,"千年之戀" ,"不得不愛" ,"月牙灣" ,"回レ! 雪月花" ,"我不配" ,"我還年輕 我還年輕" ,"牡丹江" ,"東區東區" ,"直感" ,"星空" ,"夏祭り"  ,"恋は渾沌の隷也" ,
              "恋愛サーキュレーション" ,"夠愛" ,"將軍令" ,"華陽炎" ,"極楽浄土" ,"憂愁" ,"憨人" ,"樹枝孤鳥" ,"恋"
         };
-
+        [SerializeField]
+        String name;
         [SerializeField]
         AudioManager audioManager;
         [SerializeField]
@@ -309,7 +310,7 @@ Life = 2500;
                 {
                     var obj = noteObjectPool.FirstOrDefault(x => !x.gameObject.activeSelf);
                     var positionX = noteButtons[note.NoteNumber].transform.localPosition.x;
-                    obj.Initialize(this, audioManager.bgm, note, positionX);
+                    //obj.Initialize(this, audioManager.bgm, note, positionX);
                 }
                 previousTime = bgmTime;
             }

@@ -9,6 +9,7 @@ namespace Game
     public class MessageObject : MonoBehaviour
     {
         public float baseY;
+        public float baseZ;
 
         [SerializeField]
         Text messageText;
