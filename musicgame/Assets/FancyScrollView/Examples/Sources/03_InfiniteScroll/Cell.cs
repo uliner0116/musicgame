@@ -11,7 +11,10 @@ namespace FancyScrollView.Example03
         [SerializeField] Image image = default;
         [SerializeField] Image imageLarge = default;
         [SerializeField] Button button = default;
-
+        [SerializeField] Button button3 = default;
+        [SerializeField] Button button6 = default;
+        public GameObject page;
+        public GameObject page2;
         static class AnimatorHash
         {
             public static readonly int Scroll = Animator.StringToHash("scroll");
@@ -20,14 +23,33 @@ namespace FancyScrollView.Example03
         void Start()
         {
             button.onClick.AddListener(() => Context.OnCellClicked?.Invoke(Index));
+            button3.onClick.AddListener(Active_Text);
+            button6.onClick.AddListener(Active_Text2);
+        }
+
+        public void Active_Text()
+        {
+            if (!page.activeInHierarchy)
+            { page.SetActive(true); }
+            else
+            { page.SetActive(false); }
+        }
+
+        public void Active_Text2()
+        {
+            if (!page2.activeInHierarchy)
+            { page2.SetActive(true); }
+            else
+            { page2.SetActive(false); }
         }
 
         public override void UpdateContent(ItemData itemData)
         {
             message.text = itemData.Message;
-            //messageLarge.text = Index.ToString(); 大圖文自
+            //messageLarge.text = Index.ToString(); 大圖文字
          //   Debug.Log(itemData.imageName);
             imageLarge.sprite = Resources.Load<Sprite>(itemData.imageName);
+            imageLarge.name = itemData.Message;
             var selected = Context.SelectedIndex == Index;
             image.color = selected
                 ? new Color32(0, 255, 255, 100)
