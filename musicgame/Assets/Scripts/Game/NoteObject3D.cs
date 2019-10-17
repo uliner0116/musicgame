@@ -6,8 +6,7 @@ using Common.Data;
 using System;
 using Common;
 
-namespace Game
-{
+
     public class NoteObject3D : MonoBehaviour
     {
         public float moveTime;
@@ -22,40 +21,19 @@ namespace Game
         private Vector3 v_destination;
 
    
-       /*public int NoteNumber
-        {
-            get { return gameObject.activeSelf ? note.NoteNumber : int.MinValue; }
-        }*/
-
-        /*public float AbsoluteTimeDiff
-        {
-            get { return Mathf.Abs(note.Time - bgm.time); }
-        }*/
+ 
 
          void Start()
         {
-            Debug.Log("in start");
+           // Debug.Log("in start");
             transforma = GetComponent<Transform>();
-            v_destination = lostPosition.transform.position;
+            v_destination = destination.transform.position;
             v_start = this.transform.position;
         }
 
         void Update()
-        {
-            /*var timeDiff = note.Time - bgm.time;
-
-            if (timeDiff < -SceneController.BAD_BORDER)
-            {
-                sceneController.OnNoteMiss(NoteNumber);
-                gameObject.SetActive(false);
-            }
-
-            GetComponent<Transform>().localPosition = new Vector3(positionX,
-                                                baseY + timeDiff * 100f,
-                                                baseZ + timeDiff * 100f);*/
-            Debug.Log("in update");
+        {           
             var v = time / moveTime;
-            Debug.Log(" v:" + v);
             this.transform.position = Vector3.Lerp(v_start, v_destination, v);
             time += Time.deltaTime;
 
@@ -98,4 +76,4 @@ namespace Game
             Update();
         }*/
     }
-}
+
