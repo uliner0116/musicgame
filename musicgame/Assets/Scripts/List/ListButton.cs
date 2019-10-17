@@ -41,7 +41,7 @@ public class ListButton : MonoBehaviour
         Debug.Log("line: " + line);
         father_gameObject = father_gameObject.transform.parent.gameObject;
         //song在三層後 設定音樂名稱
-        songName = father_gameObject.
+        songName = father_gameObject.name;
         for (int i=1;i<= songList.Length; i++)
         {
            if( string.Compare(songList[i-1], songName) == 0)
