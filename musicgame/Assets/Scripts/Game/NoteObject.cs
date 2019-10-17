@@ -43,10 +43,10 @@ namespace Game
                     gameObject.SetActive(false);
                 }
 
-                GetComponent<Transform>().localPosition = new Vector3(positionX,
-                                                    baseY + timeDiff * 100f,
-                                                    baseZ + timeDiff * 100f);
-            
+            GetComponent<RectTransform>().localPosition = new Vector3(positionX,
+                                            baseY + timeDiff * 1000f,
+                                            transform.localPosition.z);
+
         }
 
         public void Initialize(SceneController sceneController, AudioSource bgm, SongData.Note note, float positionX)
@@ -57,16 +57,16 @@ namespace Game
             this.bgm = bgm;
             this.note = note;
             this.positionX = positionX;
-            /*switch (note.NoteNumber)
+            switch (note.NoteNumber)
             {
                 case 1:
                /* case 3:
                     image.color = Color.green;
-                    break;
+                    break;*/
                 default:
                     image.color = Color.white;
                     break;
-            }*/
+            }
 
             Update();
         }

@@ -310,7 +310,7 @@ Life = 2500;
                 {
                     var obj = noteObjectPool.FirstOrDefault(x => !x.gameObject.activeSelf);
                     var positionX = noteButtons[note.NoteNumber].transform.localPosition.x;
-                    //obj.Initialize(this, audioManager.bgm, note, positionX);
+                    obj.Initialize(this, audioManager.bgm, note, positionX);
                 }
                 previousTime = bgmTime;
             }
