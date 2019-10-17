@@ -274,9 +274,10 @@ MonoBehaviour:
   page: {fileID: 474312216}
   mainMenuSceneName: Menu
   gameName: Game
-  gameOverCanvasPrefab: {fileID: 1311554915643708, guid: 94584587cf1e1b746bb4aa1e3b78ea4f,
+  gameOverCanvasPrefab: {fileID: 4745714264879676991, guid: 94584587cf1e1b746bb4aa1e3b78ea4f,
     type: 3}
   m_screenPos: {x: 0, y: 0}
+  name: 
   audioManager: {fileID: 653557041}
   noteButtons:
   - {fileID: 1125510451}
@@ -2674,6 +2675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseY: 0
+  baseZ: 0
   image: {fileID: 803419989}
   sceneController: {fileID: 0}
   bgm: {fileID: 0}
@@ -4373,6 +4375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseY: 0
+  baseZ: 0
   messageText: {fileID: 1451294801}
 --- !u!1 &1462967973
 GameObject:
@@ -5109,12 +5112,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 114997605268953536, guid: 848e2737c34da0e4e9ae087af2a9d519,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 570a309624415214cb0d3ea53cf9f332,
-        type: 3}
     - target: {fileID: 224417705237155306, guid: 848e2737c34da0e4e9ae087af2a9d519,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -5125,5 +5122,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -2.3
       objectReference: {fileID: 0}
+    - target: {fileID: 114997605268953536, guid: 848e2737c34da0e4e9ae087af2a9d519,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 570a309624415214cb0d3ea53cf9f332,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 848e2737c34da0e4e9ae087af2a9d519, type: 3}
