@@ -33,7 +33,7 @@ public class SettingChange : MonoBehaviour
         setVolume("audioBgm", audioBgm);
         setVolume("audioNote", audioNote);
         setNote("notePlay");
-        SceneManager.LoadScene("Menu");
+     //   SceneManager.LoadScene("Menu");
     }
 
     void setVolume(string Name, AudioSource audio)
