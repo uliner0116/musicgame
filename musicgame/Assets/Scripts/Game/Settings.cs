@@ -31,7 +31,8 @@ public class Settings : MonoBehaviour
             {"perfect", 1 },
             {"great", 2 },
             {"nice", 3 },
-            {"bad", 0 }
+            {"bad", 4 },
+            { "DestoryPoint", 0 }
         };
         return ret[key];
     }
@@ -55,7 +56,7 @@ public class Settings : MonoBehaviour
                 comment.text = "Nice!!" ;
                 comment.gameObject.SetActive(true);
                 break;
-            case 0 :
+            case 4 :
                 Count++;
                 comment.text = "Bad!!" ;
                 comment.gameObject.SetActive(true);

@@ -36,13 +36,14 @@ public class CheckTiming : MonoBehaviour{
         Debug.Log("Timing[bad].Count" + Timing["bad"].Count);
         Debug.Log("Timing[DestoryPoint].Count" + Timing["DestoryPoint"].Count);
         if ( (settings._preview && !settings._randomTiming && Timing["perfect"].Count != 0) ||
-            ( (settings._randomTiming && settings._preview) && ( (Timing["nice"].Count != 0 && Random.Range(0, 100) >= 60) || (Timing["perfect"].Count != 0 && Random.Range(0, 100) >= 80) || (Timing["great"].Count != 0 && Random.Range(0, 100) >= 70) || (Timing["bad"].Count != 0 && Random.Range(0, 100) >= 99) ) ) )
+            ( (settings._randomTiming && settings._preview) && ( (Timing["nice"].Count != 0 && Random.Range(0, 100) >= 70) || (Timing["perfect"].Count != 0 && Random.Range(0, 100) >= 80) || (Timing["great"].Count != 0 && Random.Range(0, 100) >= 75) || (Timing["bad"].Count != 0 && Random.Range(0, 100) >= 99) ) ) )
         {
-            Debug.Log("int tap");
+            Debug.Log("in tap");
             Tap();
         }
         if (Timing["DestoryPoint"].Count != 0)
         {
+            Debug.Log("DestoryPoint !=0");
             GameObject obj = Timing["DestoryPoint"][0];
             Destroy(obj);
             Timing["perfect"].Remove(obj);
@@ -50,7 +51,7 @@ public class CheckTiming : MonoBehaviour{
             Timing["nice"].Remove(obj);
             Timing["bad"].Remove(obj);
             Timing["DestoryPoint"].Remove(obj);
-            settings.Comment    (0);
+            settings.Comment(0);
         }
         Test();
     }

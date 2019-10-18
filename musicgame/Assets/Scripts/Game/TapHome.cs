@@ -6,7 +6,7 @@ public class TapHome : MonoBehaviour
 {
     TapGetter tapGetter;
     Dictionary<GameObject, CheckTiming> toCheckTiming = new Dictionary<GameObject, CheckTiming>();
-    // Start is called before the first frame update
+
     private void Awake()
     {
         tapGetter = GetComponent<TapGetter>();
