@@ -5,6 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+<<<<<<< HEAD
   - enabled: 0
     path: Assets/Scenes/SongList.unity
     guid: 3ee51f05fe7e7ba4483521b68432b6c0
@@ -21,9 +22,21 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu.unity
     guid: e679ab6702844524b817aeb5941c3f16
   - enabled: 0
+=======
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: e679ab6702844524b817aeb5941c3f16
+  - enabled: 1
+    path: Assets/FancyScrollView/Examples/03_InfiniteScroll.unity
+    guid: 22d1be941599faf45b04ab4c6a2def09
+  - enabled: 1
+>>>>>>> 098179dca763dbc9b8edc2c6f218fe5c03dfa490
     path: Assets/Scenes/Setting.unity
     guid: ba7c01276e5b5a84bbb41c73960098d5
   - enabled: 1
-    path: Assets/Scenes/test3Dgame.unity
-    guid: fcb68f89935dd6f4fbd041180cac45a8
+    path: Assets/Scenes/Game 6ver.unity
+    guid: eaef8287bcc07463495f97381d15fc50
+  - enabled: 1
+    path: Assets/Scenes/Game 3ver.unity
+    guid: bd1ecd7ff9262d848920f5292e92298a
   m_configObjects: {}
