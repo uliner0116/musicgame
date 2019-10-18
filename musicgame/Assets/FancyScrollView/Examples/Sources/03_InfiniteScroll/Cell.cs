@@ -46,8 +46,9 @@ namespace FancyScrollView.Example03
         public override void UpdateContent(ItemData itemData)
         {
             message.text = itemData.Message;
-            //messageLarge.text = Index.ToString(); 大圖文字
-         //   Debug.Log(itemData.imageName);
+            messageLarge.name = itemData.Message; //歌曲名稱
+            
+          //   Debug.Log(itemData.imageName);
             imageLarge.sprite = Resources.Load<Sprite>(itemData.imageName);
           //  imageLarge.name = itemData.Message;
             var selected = Context.SelectedIndex == Index;
