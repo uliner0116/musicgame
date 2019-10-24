@@ -276,7 +276,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -280, y: -51}
+  m_AnchoredPosition: {x: -435, y: -82}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &142687040
@@ -315,19 +315,19 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 874310f64d6c9b341854efcfa43e2af3, type: 3}
-    m_FontSize: 80
-    m_FontStyle: 0
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 90
+    m_FontStyle: 2
     m_BestFit: 0
-    m_MinSize: 6
-    m_MaxSize: 80
+    m_MinSize: 1
+    m_MaxSize: 100
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u97F3\u6A02\u904A\u6232"
+  m_Text: Music game
 --- !u!222 &142687042
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -522,18 +522,18 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 874310f64d6c9b341854efcfa43e2af3, type: 3}
-    m_FontSize: 38
+    m_FontSize: 45
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 2
-    m_MaxSize: 40
+    m_MinSize: 0
+    m_MaxSize: 50
     m_Alignment: 0
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u89F8\u78B0\u87A2\u5E55\u5373\u53EF\u9032\u5165\u904A\u6232"
+  m_Text: touch the screen
 --- !u!222 &996917367
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -834,8 +834,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -37.100006, y: -80}
-  m_SizeDelta: {x: 40, y: 40}
+  m_AnchoredPosition: {x: -53, y: -116}
+  m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1508705453
 MonoBehaviour:
@@ -1022,7 +1022,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 874310f64d6c9b341854efcfa43e2af3, type: 3}
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
     m_FontSize: 70
     m_FontStyle: 3
     m_BestFit: 0
@@ -1034,7 +1034,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "\u9EDE\u64CA\u5F0F"
+  m_Text: '''Beat''les'
 --- !u!222 &2078370698
 CanvasRenderer:
   m_ObjectHideFlags: 0
