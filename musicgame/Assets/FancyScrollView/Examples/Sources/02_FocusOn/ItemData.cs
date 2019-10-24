@@ -3,10 +3,11 @@
     public class ItemData
     {
         public string Message { get; }
-
-        public ItemData(string message)
+        public string imageName { get; }
+        public ItemData(string message, string imageName)
         {
             Message = message;
+            this.imageName = imageName;
         }
     }
 }

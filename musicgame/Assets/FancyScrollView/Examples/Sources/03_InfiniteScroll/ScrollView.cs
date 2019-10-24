@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using EasingCore;
 
@@ -9,6 +10,7 @@ namespace FancyScrollView.Example03
         [SerializeField] Scroller scroller = default;
         [SerializeField] GameObject cellPrefab = default;
 
+        Action<int> onSelectionChanged;
         protected override GameObject CellPrefab => cellPrefab;
 
         void Awake()
@@ -31,6 +33,8 @@ namespace FancyScrollView.Example03
 
             Context.SelectedIndex = index;
             Refresh();
+
+            onSelectionChanged?.Invoke(index);
         }
 
         public void UpdateData(IList<ItemData> items)
@@ -48,6 +52,10 @@ namespace FancyScrollView.Example03
 
             UpdateSelection(index);
             scroller.ScrollTo(index, 0.35f, Ease.OutCubic);
+        }
+        public void OnSelectionChanged(Action<int> callback)
+        {
+            onSelectionChanged = callback;
         }
     }
 }

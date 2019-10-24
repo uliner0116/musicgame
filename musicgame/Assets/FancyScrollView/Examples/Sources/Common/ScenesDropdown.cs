@@ -13,11 +13,8 @@ namespace FancyScrollView
         Dropdown dropdown;
 
         readonly string[] scenes = {
-            "01_Basic",
-            "02_FocusOn",
-            "03_InfiniteScroll",
-            "04_Metaball",
-            "05_Voronoi",
+            "3D",
+            "2D"
         };
 
         void Awake() => dropdown = GetComponent<Dropdown>();

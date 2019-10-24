@@ -55,6 +55,16 @@ namespace FancyScrollView.Example03
             image.color = selected
                 ? new Color32(0, 255, 255, 100)
                 : new Color32(255, 255, 255, 77);
+            if(selected)
+            {
+                button3.gameObject.SetActive(true);
+                button6.gameObject.SetActive(true);
+            }
+            else
+            {
+                button3.gameObject.SetActive(false);
+                button6.gameObject.SetActive(false);
+            }
         }
 
         public override void UpdatePosition(float position)

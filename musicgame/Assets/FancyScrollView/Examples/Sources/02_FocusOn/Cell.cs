@@ -8,6 +8,7 @@ namespace FancyScrollView.Example02
         [SerializeField] Animator animator = default;
         [SerializeField] Text message = default;
         [SerializeField] Image image = default;
+        [SerializeField] Image imageLarge = default;
         [SerializeField] Button button = default;
 
         static class AnimatorHash
@@ -23,11 +24,12 @@ namespace FancyScrollView.Example02
         public override void UpdateContent(ItemData itemData)
         {
             message.text = itemData.Message;
-
-            var selected = Context.SelectedIndex == Index;
+            imageLarge.sprite = Resources.Load<Sprite>(itemData.imageName);
+         /*   var selected = Context.SelectedIndex == Index;
             image.color = selected
                 ? new Color32(0, 255, 255, 100)
                 : new Color32(255, 255, 255, 77);
+         */
         }
 
         public override void UpdatePosition(float position)
