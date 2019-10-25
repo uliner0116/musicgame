@@ -274,7 +274,7 @@ MonoBehaviour:
   page: {fileID: 950091928}
   mainMenuSceneName: Menu
   gameName: Game
-  gameOverCanvasPrefab: {fileID: 8841086077615676579, guid: 94584587cf1e1b746bb4aa1e3b78ea4f,
+  gameOverCanvasPrefab: {fileID: 6063644347992887217, guid: 94584587cf1e1b746bb4aa1e3b78ea4f,
     type: 3}
   m_screenPos: {x: 0, y: 0}
   name: 
