@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3568859980934619757}
   - component: {fileID: 7807542651342680667}
   m_Layer: 0
-  m_Name: PreNode
+  m_Name: Node
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -104,6 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b431d99efdddf3640b676da65ba6ca25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveTime: 3
+  moveTime: 2
   destination: {fileID: 0}
   lostPosition: {fileID: 0}

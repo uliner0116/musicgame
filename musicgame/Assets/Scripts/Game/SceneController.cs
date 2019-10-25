@@ -323,7 +323,9 @@ Life = 2500;
             string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, name);
             Debug.Log("filePath:" + filePath);
 #elif UNITY_ANDROID
-            string filePath = Path.Combine("jar:file://" + Application.dataPath + "!assets/", name);
+            //string filePath = Path.Combine("jar:file://" + Application.dataPath + "!assets/", name);
+            //var filePath = Application.persistentDataPath + "/" +name;
+            StreamReader file = new StreamReader(System.IO.Path.Combine(Application.persistentDataPath, name));
 
 #endif
 
@@ -333,10 +335,14 @@ Life = 2500;
             file.Close();
 
 #elif UNITY_ANDROID
-            WWW reader = new WWW (filePath);
+            if(file != null){
+                loadJson = file.ReadToEnd();
+                file.Close();
+            }
+           /* WWW reader = new WWW (filePath);
             while (!reader.isDone) {
             }
-            loadJson = reader.text;
+            loadJson = reader.text;*/
 #endif
             Life = 2000;
             //新增一個物件類型為playerState的變數 loadData
@@ -356,7 +362,8 @@ Life = 2500;
             string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, name);
             Debug.Log("filePath:" + filePath);
 #elif UNITY_ANDROID
-            string filePath = Path.Combine("jar:file://" + Application.dataPath + "!assets/", name);
+            //string filePath = Path.Combine("jar:file://" + Application.dataPath + "!assets/", name);
+            StreamReader file = new StreamReader(System.IO.Path.Combine(Application.persistentDataPath, name));
 
 #endif
 
@@ -365,10 +372,14 @@ Life = 2500;
             loadJson = file.ReadToEnd();
             file.Close();
 #elif UNITY_ANDROID
-            WWW reader = new WWW (filePath);
+            if(file != null){
+                loadJson = file.ReadToEnd();
+                file.Close();
+            }
+            /*WWW reader = new WWW (filePath);
             while (!reader.isDone) {
             }
-            loadJson = reader.text;
+            loadJson = reader.text;*/
 #endif
 
             //新增一個物件類型為playerState的變數 loadData

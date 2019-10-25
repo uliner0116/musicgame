@@ -117,7 +117,8 @@ public class gameovercanvas : MonoBehaviour
         string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, songName);
         Debug.Log("filePath:" + filePath);
 #elif UNITY_ANDROID
-            string filePath = Path.Combine("jar:file://" + Application.dataPath + "!assets/", songName);
+            //string filePath = Path.Combine("jar:file://" + Application.dataPath + "!assets/", songName);
+         StreamReader file = new StreamReader(System.IO.Path.Combine(Application.persistentDataPath, songName));
 
 #endif
 
@@ -127,10 +128,14 @@ public class gameovercanvas : MonoBehaviour
         file.Close();
 
 #elif UNITY_ANDROID
-            WWW reader = new WWW (filePath);
+        if(file != null){
+                loadJson = file.ReadToEnd();
+                file.Close();
+            }
+            /*WWW reader = new WWW (filePath);
             while (!reader.isDone) {
             }
-            loadJson = reader.text;
+            loadJson = reader.text;*/
 #endif
 
         //新增一個物件類型為playerState的變數 loadData
