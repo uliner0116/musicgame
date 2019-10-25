@@ -97,6 +97,7 @@ namespace Game
         Boolean inOver = false;
         float time1 = 0;
         public int maxScore;
+        public string songname;
         float volume;
         AudioClip noteAudio;
 
@@ -174,31 +175,23 @@ namespace Game
             audioManager.bgm.clip = songData.audio;
             Life = 1000;
             //note音量設定
-            loadVolume("audioNote");
-            audioManager.note.volume = volume;
+            //loadVolume("audioNote");
+            //audioManager.note.volume = volume;
 Life = 2500;
             //note音設定
-            loadNoteAudio("notePlay");
+            /*loadNoteAudio("notePlay");
             audioManager.note.clip = noteAudio;
             
             Debug.Log("bgm" + audioManager.bgm.volume);
-            Debug.Log("note" + audioManager.note.volume);
+            Debug.Log("note" + audioManager.note.volume);*/
+
+
             songName = audioManager.bgm.clip.name;
-            
             //bgm音量設定
-            string name = songName;
-            /*for (int i = 1; i <= songList.Length; i++)
-            {
-                if (string.Compare(songList[i], songName) == 0)
-                {
-                    listNumber = i;
-                    name = "song" + listNumber.ToString("D3");
-                    Debug.Log("name: " + name);
-                    break;
-                }
-            } */
+
+            songname = songName;
             string txtName;
-            txtName = name + " Audio";
+            txtName = songname + " Audio";
             Debug.Log("txtName " + txtName);
             loadVolume(txtName);
             audioManager.bgm.volume = volume;
@@ -335,10 +328,8 @@ Life = 2500;
             file.Close();
 
 #elif UNITY_ANDROID
-            if(file != null){
                 loadJson = file.ReadToEnd();
                 file.Close();
-            }
            /* WWW reader = new WWW (filePath);
             while (!reader.isDone) {
             }
@@ -372,10 +363,8 @@ Life = 2500;
             loadJson = file.ReadToEnd();
             file.Close();
 #elif UNITY_ANDROID
-            if(file != null){
                 loadJson = file.ReadToEnd();
                 file.Close();
-            }
             /*WWW reader = new WWW (filePath);
             while (!reader.isDone) {
             }

@@ -38,10 +38,10 @@ public class gameovercanvas : MonoBehaviour
         songName = GameObject.FindObjectOfType<Game.SceneController>().songName;
         load();
         Debug.Log("myBestScore:" + myBestScore);
-        if (myBestScore == 0)
-        {
-            //updateMaxScore(score);
-        }
+        //if (myBestScore == 1000)
+        //{
+            updateMaxScore(score);
+        //}
         load();
         //級距%數
         noteQuantity = GameObject.FindObjectOfType<Game.SceneController>().noteQuantity;
@@ -83,8 +83,11 @@ public class gameovercanvas : MonoBehaviour
         Debug.Log("Good:" + goodpersent.ToString("#0.0"));
         Debug.Log("Bad:" + badpersent.ToString("#0.0"));
         Debug.Log("Miss:" + misspersent.ToString("#0.0"));
-
-        //updateMaxScore(score);
+        if(score > myBestScore)
+        {
+            updateMaxScore(score);
+        }
+        
     }
 
     // Update is called once per frame
@@ -100,7 +103,7 @@ public class gameovercanvas : MonoBehaviour
         //將myPlayer轉換成json格式的字串
         string saveString = JsonUtility.ToJson(mySong);
         //將字串saveString存到硬碟中
-        StreamWriter file = new StreamWriter(System.IO.Path.Combine(Application.streamingAssetsPath, songName));
+        System.IO.StreamWriter file = new StreamWriter(System.IO.Path.Combine(Application.persistentDataPath, songName));
         file.Write(saveString);
         file.Close();
     }
@@ -128,10 +131,8 @@ public class gameovercanvas : MonoBehaviour
         file.Close();
 
 #elif UNITY_ANDROID
-        if(file != null){
                 loadJson = file.ReadToEnd();
                 file.Close();
-            }
             /*WWW reader = new WWW (filePath);
             while (!reader.isDone) {
             }

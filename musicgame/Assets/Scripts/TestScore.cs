@@ -23,9 +23,10 @@ public class TestScore : MonoBehaviour
         public string name;
         public int score;
     }
+
     public void load()
     {
-        string loadJson;
+        string loadJson = null;
         //讀取json檔案並轉存成文字格式
 #if UNITY_EDITOR
         string filePath = System.IO.Path.Combine(Application.streamingAssetsPath, songName);
@@ -40,7 +41,8 @@ public class TestScore : MonoBehaviour
         StreamReader file = new StreamReader(filePath);
         if(file != null)
         {
-        loadJson = file.ReadToEnd();
+            Debug.Log("not null");
+            loadJson = file.ReadToEnd();
         file.Close();
         isFull = false;
         }
@@ -90,6 +92,18 @@ public class TestScore : MonoBehaviour
         }
     }
 
+    void updateMaxScore(int score)
+    {
+        songState mySong = new songState();
+        mySong.name = songName;
+        mySong.score = score;
+        //將myPlayer轉換成json格式的字串
+        string saveString = JsonUtility.ToJson(mySong);
+        //將字串saveString存到硬碟中
+        StreamWriter file = new StreamWriter(System.IO.Path.Combine(Application.persistentDataPath, songName));
+        file.Write(saveString);
+        file.Close();
+    }
     // Update is called once per frame
     void Update()
     {
