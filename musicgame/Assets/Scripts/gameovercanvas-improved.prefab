@@ -396,7 +396,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
 <<<<<<< HEAD
+<<<<<<< HEAD
   bmenu: SongList
+=======
+  bmenu: Menu
+>>>>>>> parent of 4012fc8... 初始化設定完成 歷史分數紀錄完成
 --- !u!1 &3206925751335673447
 =======
 --- !u!1 &4114635058926014948
