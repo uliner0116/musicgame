@@ -217,17 +217,17 @@ PrefabInstance:
     - target: {fileID: 1747360886316832959, guid: a5f73e63b9cf5418ca91edef13ad6686,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 829
+      value: 930
       objectReference: {fileID: 0}
     - target: {fileID: 1747360886316832959, guid: a5f73e63b9cf5418ca91edef13ad6686,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -9
+      value: -10
       objectReference: {fileID: 0}
     - target: {fileID: 1747360886316832959, guid: a5f73e63b9cf5418ca91edef13ad6686,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 160
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1747360886316832959, guid: a5f73e63b9cf5418ca91edef13ad6686,
         type: 3}
@@ -268,6 +268,11 @@ PrefabInstance:
         type: 3}
       propertyPath: defaultScene
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1747360886514953421, guid: a5f73e63b9cf5418ca91edef13ad6686,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a5f73e63b9cf5418ca91edef13ad6686, type: 3}
@@ -391,6 +396,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scrollView: {fileID: 1492537697}
+  Line3: {fileID: 0}
+  Line6: {fileID: 0}
 --- !u!1 &777088603
 GameObject:
   m_ObjectHideFlags: 0

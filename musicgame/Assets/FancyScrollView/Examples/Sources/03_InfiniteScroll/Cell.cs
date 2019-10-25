@@ -64,6 +64,8 @@ namespace FancyScrollView.Example03
             {
                 button3.gameObject.SetActive(false);
                 button6.gameObject.SetActive(false);
+                page.SetActive(false);
+                page2.SetActive(false);
             }
         }
 
